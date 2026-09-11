@@ -1,6 +1,6 @@
 from datetime import UTC, datetime, timedelta
 
-from swarmtrace.state import LiveSurfaceState, replay_records
+from swarmtrace.state import LiveSurfaceState, reconstruct_hourly, replay_records
 
 
 def test_two_labels_make_one_active_multiwriter_resource() -> None:
@@ -485,3 +485,68 @@ def test_active_multiwriter_context_counts() -> None:
     assert state.active_multiwriter_count == 2
     assert state.active_multiwriter_incidence_count == 5
     assert state.active_multiwriter_label_count == 4
+
+
+def test_reconstruct_hourly_tracks_surface_and_context() -> None:
+    revisions = [
+        {
+            "page_key": "dse~ExamplePage",
+            "label": "AgentA",
+            "ip16": "20.57",
+            "time": "2026-06-18T12:10:00Z",
+            "seq": 1,
+        },
+        {
+            "page_key": "dse~ExamplePage",
+            "label": "AgentB",
+            "ip16": "20.58",
+            "time": "2026-06-18T12:20:00Z",
+            "seq": 2,
+        },
+    ]
+
+    deletes = [
+        {
+            "page_key": "dse~UnrelatedPage",
+            "event_id": "delete:test:1",
+            "time": "2026-06-18T12:30:00Z",
+        }
+    ]
+
+    rows = reconstruct_hourly(
+        revisions=revisions,
+        deletes=deletes,
+        horizon=timedelta(hours=6),
+        start=datetime(2026, 6, 18, 12, 0, tzinfo=UTC),
+        end=datetime(2026, 6, 18, 14, 0, tzinfo=UTC),
+    )
+
+    assert len(rows) == 2
+
+    first = rows[0]
+
+    assert first.hour_start == datetime(2026, 6, 18, 12, 0, tzinfo=UTC)
+    assert first.surface_start == 0
+    assert first.surface_end == 1
+
+    assert first.activations == 1
+    assert first.deletion_exits == 0
+    assert first.inactivity_exits == 0
+
+    assert first.delete_actions == 1
+
+    assert first.active_multiwriter_incidences == 2
+    assert first.active_multiwriter_labels == 2
+
+    second = rows[1]
+
+    assert second.surface_start == 1
+    assert second.surface_end == 1
+
+    assert second.activations == 0
+    assert second.deletion_exits == 0
+    assert second.inactivity_exits == 0
+    assert second.delete_actions == 0
+
+    assert second.active_multiwriter_incidences == 2
+    assert second.active_multiwriter_labels == 2

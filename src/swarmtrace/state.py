@@ -12,6 +12,19 @@ class SurfaceTransition:
     timestamp: datetime
 
 
+@dataclass(frozen=True)
+class HourlySurfaceRow:
+    hour_start: datetime
+    surface_start: int
+    surface_end: int
+    activations: int
+    deletion_exits: int
+    inactivity_exits: int
+    delete_actions: int
+    active_multiwriter_incidences: int
+    active_multiwriter_labels: int
+
+
 class LiveSurfaceState:
     def __init__(self, horizon: timedelta) -> None:
         self.horizon = horizon
@@ -123,13 +136,15 @@ class LiveSurfaceState:
         )
 
 
-def replay_records(
+def _prepare_timeline(
     revisions: list[dict],
     deletes: list[dict],
     horizon: timedelta,
-) -> LiveSurfaceState:
-    state = LiveSurfaceState(horizon=horizon)
-
+) -> tuple[
+    dict[datetime, list[dict]],
+    dict[datetime, list[dict]],
+    list[datetime],
+]:
     revisions_by_time: dict[datetime, list[dict]] = defaultdict(list)
     deletes_by_time: dict[datetime, list[dict]] = defaultdict(list)
     expiry_times: set[datetime] = set()
@@ -155,34 +170,147 @@ def replay_records(
     if ambiguous_collisions:
         raise ValueError("Revision/delete collision on same page and timestamp")
 
-    event_times = set(revisions_by_time) | set(deletes_by_time) | expiry_times
+    event_times = sorted(set(revisions_by_time) | set(deletes_by_time) | expiry_times)
 
-    for timestamp in sorted(event_times):
-        revisions_at_time = sorted(
-            revisions_by_time.get(timestamp, []),
-            key=lambda record: (record["page_key"], record["seq"]),
+    return revisions_by_time, deletes_by_time, event_times
+
+
+def _apply_timestamp(
+    state: LiveSurfaceState,
+    timestamp: datetime,
+    revisions_by_time: dict[datetime, list[dict]],
+    deletes_by_time: dict[datetime, list[dict]],
+) -> None:
+    revisions_at_time = sorted(
+        revisions_by_time.get(timestamp, []),
+        key=lambda record: (record["page_key"], record["seq"]),
+    )
+
+    protected_pairs = {
+        (record["page_key"], record["label"])
+        for record in revisions_at_time
+        if classify_revision(record) == "suspicious"
+    }
+
+    state.expire(
+        timestamp,
+        protected_pairs=protected_pairs,
+    )
+
+    for record in revisions_at_time:
+        normalized = dict(record)
+        normalized["time"] = timestamp
+        state.apply_revision(normalized)
+
+    for record in deletes_by_time.get(timestamp, []):
+        state.apply_delete(
+            page_key=record["page_key"],
+            timestamp=timestamp,
         )
 
-        protected_pairs = {
-            (record["page_key"], record["label"])
-            for record in revisions_at_time
-            if classify_revision(record) == "suspicious"
-        }
 
-        state.expire(
-            timestamp,
-            protected_pairs=protected_pairs,
+def replay_records(
+    revisions: list[dict],
+    deletes: list[dict],
+    horizon: timedelta,
+) -> LiveSurfaceState:
+    state = LiveSurfaceState(horizon=horizon)
+
+    revisions_by_time, deletes_by_time, event_times = _prepare_timeline(
+        revisions=revisions,
+        deletes=deletes,
+        horizon=horizon,
+    )
+
+    for timestamp in event_times:
+        _apply_timestamp(
+            state=state,
+            timestamp=timestamp,
+            revisions_by_time=revisions_by_time,
+            deletes_by_time=deletes_by_time,
         )
-
-        for record in revisions_at_time:
-            normalized = dict(record)
-            normalized["time"] = timestamp
-            state.apply_revision(normalized)
-
-        for record in deletes_by_time.get(timestamp, []):
-            state.apply_delete(
-                page_key=record["page_key"],
-                timestamp=timestamp,
-            )
 
     return state
+
+
+def reconstruct_hourly(
+    revisions: list[dict],
+    deletes: list[dict],
+    horizon: timedelta,
+    start: datetime,
+    end: datetime,
+) -> list[HourlySurfaceRow]:
+    if start >= end:
+        raise ValueError("start must be earlier than end")
+
+    state = LiveSurfaceState(horizon=horizon)
+
+    revisions_by_time, deletes_by_time, event_times = _prepare_timeline(
+        revisions=revisions,
+        deletes=deletes,
+        horizon=horizon,
+    )
+
+    event_index = 0
+
+    while event_index < len(event_times) and event_times[event_index] < start:
+        timestamp = event_times[event_index]
+
+        _apply_timestamp(
+            state=state,
+            timestamp=timestamp,
+            revisions_by_time=revisions_by_time,
+            deletes_by_time=deletes_by_time,
+        )
+
+        event_index += 1
+
+    rows = []
+    hour_start = start
+
+    while hour_start < end:
+        hour_end = min(hour_start + timedelta(hours=1), end)
+
+        surface_start = state.active_multiwriter_count
+        transition_start = len(state.transitions)
+        delete_actions = 0
+
+        while event_index < len(event_times) and event_times[event_index] < hour_end:
+            timestamp = event_times[event_index]
+
+            delete_actions += len(deletes_by_time.get(timestamp, []))
+
+            _apply_timestamp(
+                state=state,
+                timestamp=timestamp,
+                revisions_by_time=revisions_by_time,
+                deletes_by_time=deletes_by_time,
+            )
+
+            event_index += 1
+
+        new_transitions = state.transitions[transition_start:]
+
+        activations = sum(transition.kind == "activation" for transition in new_transitions)
+        deletion_exits = sum(transition.kind == "deletion_exit" for transition in new_transitions)
+        inactivity_exits = sum(
+            transition.kind == "inactivity_exit" for transition in new_transitions
+        )
+
+        rows.append(
+            HourlySurfaceRow(
+                hour_start=hour_start,
+                surface_start=surface_start,
+                surface_end=state.active_multiwriter_count,
+                activations=activations,
+                deletion_exits=deletion_exits,
+                inactivity_exits=inactivity_exits,
+                delete_actions=delete_actions,
+                active_multiwriter_incidences=(state.active_multiwriter_incidence_count),
+                active_multiwriter_labels=(state.active_multiwriter_label_count),
+            )
+        )
+
+        hour_start = hour_end
+
+    return rows
