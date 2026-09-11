@@ -79,6 +79,21 @@ class LiveSurfaceState:
     def active_multiwriter_count(self) -> int:
         return sum(len(writers) >= 2 for writers in self._writers_by_page.values())
 
+    @property
+    def active_multiwriter_incidence_count(self) -> int:
+        return sum(len(writers) for writers in self._writers_by_page.values() if len(writers) >= 2)
+
+    @property
+    def active_multiwriter_label_count(self) -> int:
+        labels = {
+            label
+            for writers in self._writers_by_page.values()
+            if len(writers) >= 2
+            for label in writers
+        }
+
+        return len(labels)
+
     def apply_delete(
         self,
         page_key: str,

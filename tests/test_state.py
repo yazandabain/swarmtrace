@@ -350,6 +350,7 @@ def test_expiry_records_inactivity_exit() -> None:
     assert transition.page_key == "dse~ExamplePage"
     assert transition.timestamp == expire_time
 
+
 def test_replay_records_processes_unsorted_events_chronologically() -> None:
     revisions = [
         {
@@ -389,13 +390,10 @@ def test_replay_records_processes_unsorted_events_chronologically() -> None:
         "deletion_exit",
     ]
 
-    assert state.transitions[0].timestamp == datetime(
-        2026, 6, 18, 12, 1, tzinfo=UTC
-    )
+    assert state.transitions[0].timestamp == datetime(2026, 6, 18, 12, 1, tzinfo=UTC)
 
-    assert state.transitions[1].timestamp == datetime(
-        2026, 6, 18, 12, 2, tzinfo=UTC
-    )
+    assert state.transitions[1].timestamp == datetime(2026, 6, 18, 12, 2, tzinfo=UTC)
+
 
 def test_replay_records_inactivity_exit_at_exact_expiry_time() -> None:
     revisions = [
@@ -426,9 +424,8 @@ def test_replay_records_inactivity_exit_at_exact_expiry_time() -> None:
         "inactivity_exit",
     ]
 
-    assert state.transitions[-1].timestamp == datetime(
-        2026, 6, 18, 18, 0, tzinfo=UTC
-    )
+    assert state.transitions[-1].timestamp == datetime(2026, 6, 18, 18, 0, tzinfo=UTC)
+
 
 def test_refresh_at_exact_expiry_does_not_create_false_transitions() -> None:
     revisions = [
@@ -466,10 +463,25 @@ def test_refresh_at_exact_expiry_does_not_create_false_transitions() -> None:
         "inactivity_exit",
     ]
 
-    assert state.transitions[0].timestamp == datetime(
-        2026, 6, 18, 12, 1, tzinfo=UTC
-    )
+    assert state.transitions[0].timestamp == datetime(2026, 6, 18, 12, 1, tzinfo=UTC)
 
-    assert state.transitions[1].timestamp == datetime(
-        2026, 6, 18, 18, 1, tzinfo=UTC
-    )
+    assert state.transitions[1].timestamp == datetime(2026, 6, 18, 18, 1, tzinfo=UTC)
+
+
+def test_active_multiwriter_context_counts() -> None:
+    state = LiveSurfaceState(horizon=timedelta(hours=6))
+
+    start = datetime(2026, 6, 18, 12, 0, tzinfo=UTC)
+
+    state.apply_write("dse~PageA", "AgentA", start)
+    state.apply_write("dse~PageA", "AgentB", start)
+
+    state.apply_write("dse~PageB", "AgentB", start)
+    state.apply_write("dse~PageB", "AgentC", start)
+    state.apply_write("dse~PageB", "AgentD", start)
+
+    state.apply_write("dse~SingleWriterPage", "AgentE", start)
+
+    assert state.active_multiwriter_count == 2
+    assert state.active_multiwriter_incidence_count == 5
+    assert state.active_multiwriter_label_count == 4
