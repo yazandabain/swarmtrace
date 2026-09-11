@@ -1,0 +1,43 @@
+{
+  "cross_stream": {
+    "same_page_same_timestamp_collisions": 0,
+    "shared_timestamps": 4
+  },
+  "deletes": {
+    "bad_timestamps": 0,
+    "duplicate_event_id_groups": 0,
+    "missing_event_id": 0,
+    "shared_timestamp_groups": 0,
+    "summary": {
+      "page_held_false": 1248,
+      "page_held_missing": 0,
+      "page_held_true": 3969,
+      "successful": 5217,
+      "unexpected_actor": 0
+    },
+    "time_max": "2026-07-14T13:56:54Z",
+    "time_min": "2026-06-04T10:53:40Z",
+    "total": 5217
+  },
+  "revisions": {
+    "actor_counts": {
+      "ambiguous": 5,
+      "missing": 0,
+      "moderator": 26,
+      "suspicious": 13372,
+      "total": 13403
+    },
+    "bad_timestamps": 0,
+    "duplicate_page_seq_groups": 0,
+    "duplicate_rev_id_groups": 0,
+    "missing_rev_id": 0,
+    "missing_seq": 0,
+    "pages": 3908,
+    "same_page_same_timestamp_groups": 93,
+    "seq_time_reversals": 0,
+    "shared_timestamp_groups": 992,
+    "time_max": "2026-07-02T17:24:40Z",
+    "time_min": "2026-05-24T06:02:19Z",
+    "total": 13403
+  }
+}
