@@ -1,69 +1,70 @@
 # SwarmTrace: activity windows and resource targeting in DSEWiki
 
 Author: Yazan Al-Dabain
-Affiliation: [Affiliation to confirm]
 With: Apart Research
-Status: Draft for author review
+Status: Submission version
 
 ## Abstract
 
-Which shared resources should an incident responder prioritize when agents' writing activity changes over time? I reconstruct DSEWiki's observed multi-writer surface from stored revisions and successful deletion events, then test static degree targeting against uniform resource withdrawal. The locally frozen six-hour snapshot contains 18 resources and 27 labels and shows no consistent targeting advantage. An exploratory survey changes the interpretation: at a 25% budget, degree targeting beats median random withdrawal in 138 of 151 nonempty six-hour snapshots. I then hold the candidate pool and six-hour evaluation graph fixed while changing the ranking horizon. At the frozen time, the top 18 resources ranked by 24-hour degree include none of the 18 six-hour resources. Their removal reduces the older graph's largest-label component from 782 to 545 while leaving the recent graph unchanged. This complete miss occurs at 20 of 151 hourly snapshots and survives every valid degree-tie ordering. The result exposes a mismatch between historical connectivity and recent write overlap. It supports auditing ranking recency, not claims about communication loss, information lifetime or containment.
+SwarmTrace audits how an activity window changes the interpretation of resource targeting in the DSEWiki incident. I reconstruct resource lifecycles and recent co-writing from archived revisions and deletion events, then compare static degree targeting with uniform withdrawal. The locally frozen six-hour snapshot has 18 resources and 27 labels and shows no consistent degree advantage. An exploratory survey finds an advantage at a 25% budget in 138 of 151 nonempty hourly snapshots. A separate comparison holds candidates and the six-hour evaluation graph fixed. At the frozen time, the first 18 resources ranked by 24-hour degree include none of the 18 recent resources. Their withdrawal reduces the older graph's largest-label component from 782 to 545 while leaving recent connectivity unchanged. Complete misses occur at 20 of 151 hours under every valid degree-tie ordering; uniform withdrawal would produce 29.0 such hours in expectation. Miss counts therefore do not show that degree targeting is worse than random. The contribution is an auditable separation of historical fragmentation, recent-resource coverage and deletion accounting. These structural measurements do not establish information loss or containment.
 
 ## 1. Introduction
 
-The DSEWiki investigation documents agents sharing answers on public infrastructure and reacting to moderator cleanup [1]. This creates two measurement problems. A deletion may target a page with no recent writers; a page with many historical writers may be absent from the current multi-writer surface. Counting deletions or measuring fragmentation of an accumulated graph does not distinguish these cases.
+The DSEWiki investigation reports agents sharing answers on public infrastructure and reacting to moderator cleanup [1]. A deletion can target a page with no recent writers, and a historical hub can be absent from the current multi-writer surface. Deletion totals and fragmentation of an accumulated graph do not distinguish these cases.
 
-SwarmTrace reconstructs resource lifecycles and recent co-writing, preserves a frozen historical withdrawal test, and adds an explicitly exploratory audit across time. Its main contribution is a controlled comparison of ranking horizons on the same candidate pool and recent evaluation graph. This tests whether a structural targeting result reaches the activity it is being used to describe. It does not infer communication or introduce a new attack algorithm.
+SwarmTrace reconstructs resource episodes and recent co-writing, preserves a locally frozen withdrawal test, and audits targeting across time. Holding candidates, action counts and the evaluation graph fixed separates a ranking's historical fragmentation from its coverage of recent overlap. The artifact makes those definitions and their source records inspectable.
 
 ## 2. Related Work
 
-The original investigation [1] and ProWiki export [2] supply the incident evidence and provenance. Targeted versus random removal is an established network-robustness comparison [3]; here removals affect resource nodes and component size counts original labels. Temporal-network research explains why aggregation can alter connectivity and why static paths need not represent time-respecting information flow [4]. SwarmTrace applies these concerns to an incident-response measurement task, with explicit deletion and expiry accounting.
+The incident account [1] and ProWiki export [2] supply the evidence. Targeted versus random removal is an established robustness comparison [3], and temporal-network research explains why static connectivity need not represent time-respecting flow [4]. Lee et al. [5] use contact recency for immunization and evaluate on later contacts and simulated outbreaks. Williams and Musolesi [6] distinguish topological, temporal and spatial disruption under node failure. These works already establish that timing and endpoint choice matter. SwarmTrace contributes an incident-specific resource audit with deletion and expiry accounting and a controlled comparison of activity windows. It neither introduces a temporal centrality nor evaluates future transmission.
 
 <!-- pagebreak -->
 
 ## 3. Methods
 
-**Data and identity.** I use the pinned explorer-schema-2 export [2], verified against five SHA-256 hashes. DSEWiki supplies 13,403 revisions and 5,217 successful deletion events across the available history. The frozen actor rule excludes 26 revisions matching [Admin1] and IP /16 2.202, plus five ambiguous-handle revisions. No DSE revision lacks a label; 13,372 enter the qualifying-write stream. Labels are observable identifiers, not authenticated agents. Save-event pointers are not additional writes.
+**Data and identity.** The pinned explorer-schema-2 export [2] matches five frozen SHA-256 hashes. DSEWiki supplies 13,403 revisions and 5,217 successful deletions. The frozen actor rule excludes 26 revisions matching [Admin1] and IP /16 2.202, plus five ambiguous-handle revisions. No revision lacks a label; 13,372 qualify. Labels are identifiers, not authenticated agents. Save-event pointers are not additional writes.
 
 **Historical reconstruction.** The replay initializes from available prehistory and reports [June 16 00:00, June 23 00:00) UTC. A successful deletion clears a represented page episode; a subsequent write starts a new episode without inherited writers. Unmatched deletions remain in a separate ledger. An incidence is live when its latest qualifying write lies in (t-W,t], with expiry before same-second source events. At least two live labels make a resource multi-writer. I count entries, deletion exits and expiry exits. W=6h is primary; 1h and 24h were frozen sensitivities.
 
 **Frozen withdrawal test.** The snapshot is immediately before June 19, 2026, 14:05:02 UTC. It excludes events at T and includes writes in [T-W,T). T coincides with the published cleanup-warning revision [1], which is excluded. The unweighted bipartite graph joins qualifying labels to eligible resource episodes. I rank resources once by distinct-label degree, breaking ties lexicographically by page key and episode. At each action count, I compare this ordering with 500 seeded uniform permutations and separately assess 500 degree-tie orderings.
 
-For original snapshot labels L, R(k)=max_C |C intersect L|/|L|. Labels remain nodes after withdrawal, including isolates. I report Q(k)=R(k)/R(0) and G(k)=median(R_random(k))-R_degree(k). Positive G favors degree targeting. Budgets round upward to whole resources. Pointwise 5th-95th percentile envelopes describe policy variation on a fixed graph, not uncertainty about the incident.
+For original labels L, let c(k) count labels in the largest component after k withdrawals. R(k)=c(k)/|L| and Q(k)=c(k)/c(0). Labels remain nodes, including isolates. G(k) is median random R(k) minus degree-policy R(k); positive G favors degree targeting. Budgets round upward to whole resources. Pointwise 5th-95th percentile envelopes describe policy variation on a fixed graph, not uncertainty about the incident.
 
 **Exploratory temporal audit.** After inspecting the frozen results, I specified a survey of all 168 hourly left-limit snapshots, using 6h and 24h graphs and the same 500-permutation comparisons. Empty graphs are reported separately. At each nonempty six-hour snapshot, I also fix the action pool to all 24h-eligible episodes and evaluate only the six-hour graph with its original labels. These candidates contain every six-hour resource. I compare 24h degree, 6h eligible-resource degree and uniform withdrawal at identical action counts. Actions outside the six-hour graph consume budget but do not alter its endpoint.
 
-The main coverage diagnostic uses k equal to the number of six-hour resources: enough actions to remove that surface if selected. Recent-degree coverage is then one by construction; it is a reference, not an algorithmic discovery. I compute exact coverage bounds over valid older-degree ties and retain the sampled tie trajectories. Adjacent hourly observations are dependent. These analyses are descriptive extensions, not replacements for the frozen test. Protocols, validation and full traces are documented in Appendix A.
+The main coverage diagnostic sets k to the number of six-hour resources, so recent-degree coverage is one by construction. Exact cutoff-tie bounds check older-degree misses. Further exploratory controls add 1h, 3h and 12h evaluation windows and exact uniform baselines: with M candidates and m recent resources, expected coverage is k/M and the miss probability is C(M-m,k)/C(M,k), where C(n,k) counts k-subsets of n elements. All extensions are post-result and descriptive; adjacent hours are dependent. Appendix A records their sequence and validation.
 
 <!-- pagebreak -->
 
 ## 4. Results
 
-**Reconstruction and frozen test.** At 6h, 1,101 activations balance 54 deletion exits and 1,047 expiry exits over the reporting week. Of 442 deletion actions, 345 match represented episodes: 54 have at least two live writers, 61 have one and 230 have none; 97 are unmatched. The hourly peak is 331 resources. The frozen graph has 18 resources, 27 labels and 40 incidences, split into components of 8, 6, 4, 3, 2, 2 and 2 labels. At 2, 5 and 9 removals, G is -0.037, 0 and +0.037. Exact enumeration shows that 35.1% of all nine-resource subsets do at least as well as the fixed degree order. The weak primary result is retained (Appendix B).
+**Reconstruction and frozen test.** At 6h, 1,101 activations balance 54 deletion exits and 1,047 expiry exits. Only 54 of 442 deletion actions hit a currently multi-writer resource; this does not measure moderation success. The frozen graph has 18 resources, 27 labels and 40 incidences. At 2, 5 and 9 removals, G is -0.037, 0 and +0.037. Exact enumeration finds that 35.1% of nine-resource subsets do at least as well as degree targeting (Appendix B).
 
-**Across time.** At the 25% budget, six-hour degree targeting beats median uniform withdrawal in 138 of 151 nonempty hourly graphs; nine tie and four favor uniform withdrawal. Using the median degree-tie result gives 139 positive hours. At 24h, the corresponding fixed-order count is 160 of 161. The frozen six-hour result is therefore not typical of the reporting week (Figure 1, upper panel).
+**Across time.** At the 25% budget, six-hour degree targeting beats median uniform withdrawal in 138 of 151 nonempty hourly graphs; nine tie and four favor uniform withdrawal. Median degree-tie performance gives 139 positive hours. At 24h, the fixed-order count is 160 of 161. The weak frozen result is unusual within this survey (Figure 1).
 
 ![Figure 1](../outputs/figures/paper_figure1_temporal.png)
 
-Figure 1. Exploratory hourly audit. Upper: median random Q minus fixed degree Q at ceil(25% of each graph's resources); positive values favor degree targeting. Lower: coverage of six-hour resources after k withdrawals from the common 24h candidate pool, where k equals the six-hour resource count. Recent-degree coverage is one by construction. Gaps are empty graphs. The dotted vertical line marks frozen T. These are dependent snapshots of one incident.
+Figure 1. Exploratory hourly audit. Upper: median random Q minus fixed degree Q at ceil(25% of each graph's resources). Lower: six-hour resource coverage from the common 24h candidate pool at k equal to the six-hour resource count; uniform expectation is k/M. Recent-degree coverage is one by construction. Gaps are empty graphs, and the vertical line marks frozen T. Adjacent snapshots are dependent.
 
-**Ranking horizon versus evaluation horizon.** At T, 24h degree's first 18 actions select zero six-hour resources, regardless of degree ties. They reduce the 24h largest-label component from 782 to 545, but leave the six-hour component at eight. Recent-degree withdrawal leaves isolated labels at the same budget. Across the 151 hourly comparisons, older-degree coverage has median 33.3%; it is zero at 20 snapshots under every valid tie ordering. Older-degree Q6 still beats median uniform Q6 in 113 hours. Thus older ranking often helps, but its historical fragmentation result does not establish coverage of the recent surface.
+**Fixed recent evaluation.** At T, 24h degree's first 18 actions select zero six-hour resources under every valid tie ordering. They reduce the older largest-label component from 782 to 545 and leave the recent component at eight. Only 18 of 376 candidates are recent, so uniform withdrawal also has a 40.5% miss probability. Across 151 hours, older-degree coverage has median 33.3% and 20 complete misses, compared with 29.0 expected uniform misses. Older-degree Q6 beats median uniform Q6 in 113 hours. The result demonstrates disagreement between historical fragmentation and recent coverage, not general inferiority to random targeting.
 
 <!-- pagebreak -->
 
 ## 5. Discussion and Limitations
 
-The frozen experiment alone would support an incomplete account. It finds little advantage at six hours and a large advantage at 24 hours, but both the eligible graph and its label population change. The hourly survey shows that degree prioritization usually performs better than median uniform withdrawal on the graph that supplies its ranking. The common-pool comparison asks a different question: whether older-degree targeting reaches the recently shared resources, at the same action budget and with the evaluation graph held fixed.
+Degree targeting usually outperforms median uniform withdrawal on the graph that supplies its ranking. The frozen six-hour result is a weak exception. The crossed comparison fixes the candidate pool and recent evaluation graph, exposing what fragmentation of the older graph leaves untouched.
 
-The mismatch at T is concrete. WillkommenImWiki, StartSeite and TestSeite have 24h degrees of 323, 156 and 106; their latest qualifying writes are approximately 13.5, 11.0 and 11.0 hours old. They are absent from the six-hour graph. In total, 354 of 376 older candidates have no qualifying writer within six hours. This explains how substantial fragmentation of older overlap can coexist with no change in the recent graph. It does not establish that these older pages were useless or unreadable.
+At T, WillkommenImWiki, StartSeite and TestSeite have 24h degrees of 323, 156 and 106; their latest qualifying writes are about 13.5, 11.0 and 11.0 hours old. All are absent from the six-hour graph, and 354 of 376 older candidates have no qualifying six-hour writer. These pages could still contain useful, readable information.
 
-For incident analysis, the practical output is a check: state which activity a ranking describes, then evaluate its selected actions against that same activity definition. SwarmTrace exposes disagreement between those choices and preserves the underlying revisions and deletion matches for review. The reference recent-degree policy optimizes a recency-defined proxy. Its complete coverage at the full recent-resource budget is guaranteed by construction and cannot validate six hours as the correct information lifetime.
+The window check preserves the complete miss at T for 1h, 3h, 6h and 12h evaluation. Across the week, miss frequency changes substantially with the window and the fraction of recent candidates (Appendix B). Six hours is an operational definition, not an estimated information lifetime.
+
+The useful incident-analysis check is to specify the activity of interest and measure which of its resources the selected actions reach. Filtering to the recent set guarantees full coverage when the budget equals its size; degree ordering adds nothing to that guarantee. Behavioral claims would require evidence of reads, information use or subsequent adaptation.
 
 ### Limitations
 
 The export omits some activity, including unrecovered short writes. Labels can be reused, changed or impersonated. Co-writing does not demonstrate reading, communication or independent agents, and a static path is not necessarily a time-respecting information path. Deletion ends a modeled resource episode, not knowledge copied elsewhere.
 
-Withdrawal uses equal action costs and assumes no adaptation. R tracks only the largest label component and can hide changes elsewhere. The frozen timestamp is not a representative sample; the later hourly survey is explicitly exploratory and its observations are dependent. Local clock, tie and ambiguous-label checks preserve the main interpretation, but do not resolve missing-data or identity uncertainty. Appendix C details these assumptions and dual-use limits.
+Withdrawal uses equal action costs and assumes no adaptation. R tracks only the largest label component and can hide changes elsewhere. The frozen timestamp is not a representative sample; all later surveys and controls are exploratory. Local clock, tie, window and ambiguous-label checks do not resolve missing-data or identity uncertainty. Appendix C details these limits.
 
 ### Future Work
 
@@ -75,7 +76,7 @@ Degree targeting often fragments observed co-writing more than uniform withdrawa
 
 ## Code and Data
 
-The SwarmTrace reproducibility bundle contains code and derived evidence; a public code URL is pending author publication. Source data are the pinned ProWiki export [2]. Appendix A gives reproduction commands. Raw revision bodies and the supplied template are not included in the bundle.
+Code, tests and derived evidence are provided in the companion archive swarmtrace_artifact.zip. Source data are the pinned ProWiki export [2]. Appendix A specifies reproduction. The archive excludes raw revision bodies and the supplied template.
 
 <!-- pagebreak -->
 
@@ -89,19 +90,25 @@ The SwarmTrace reproducibility bundle contains code and derived evidence; a publ
 
 [4] Petter Holme and Jari Saramaki. 2012. Temporal networks. Physics Reports 519, 97-125. https://doi.org/10.1016/j.physrep.2012.03.001
 
+[5] Sungmin Lee, Luis E. C. Rocha, Fredrik Liljeros, and Petter Holme. 2012. Exploiting temporal network structures of human interaction to effectively immunize populations. PLOS ONE 7(5), e36439. https://doi.org/10.1371/journal.pone.0036439
+
+[6] Matthew J. Williams and Mirco Musolesi. 2016. Spatio-temporal networks: reachability, centrality and robustness. Royal Society Open Science 3, 160196. https://doi.org/10.1098/rsos.160196
+
 <!-- pagebreak -->
 
 ## Appendix A. Reproduction and audit trail
 
-The original plan is docs/preanalysis.md, frozen in commit bf16642717ca69aff04e201158c5e7352dceb75b before analysis implementation. Its SHA-256 is feb30cc6aa14a6915ccceb6507b2ace6a1fc529e65e1d8bbbbbbef29e1be931a. It remains unchanged. The preparation disclosure covers dataset acquisition, schema/provenance inspection, repository setup and methodological planning before the sprint. It does not claim that this preparation occurred during the sprint.
+The original plan is docs/preanalysis.md, frozen in commit bf16642717ca69aff04e201158c5e7352dceb75b before analysis implementation. Its SHA-256 is feb30cc6aa14a6915ccceb6507b2ace6a1fc529e65e1d8bbbbbbef29e1be931a. It remains unchanged. Dataset acquisition, schema/provenance inspection, repository setup and methodological planning preceded the sprint. The implementation commits begin on September 11, 2026.
 
 Implementation details not fixed originally were recorded before the first snapshot results in docs/experiment2-implementation.md. The random seed is 20260912+W; the degree-tie seed is 20261912+W, with NumPy PCG64. Simulation quantiles use NumPy's linear method. Exact subset quantiles use the inverse discrete CDF. Post-result diagnostics and their motivations are recorded separately in docs/audit-extensions.md.
 
 With Python 3.12 and uv, install using `uv sync --locked --group report`. Run `uv run python -m swarmtrace.run --data-dir /path/to/swarmtrace-data --with-temporal-audit`. The raw directory needs pages.jsonl, revisions.jsonl, events.jsonl, labels.jsonl and manifest.json from [2]; the runner verifies their frozen hashes. Run `uv run pytest -q` for tests. `uv run --group report python report/build_submission.py` rebuilds the PDF and editable DOCX using the supplied local template and report/manuscript.md.
 
-The analysis saves hourly tables, every deletion match and transition, snapshot label-resource incidences with source revision IDs, degree rankings, all 500 random and 500 tie orderings per horizon, integer component trajectories and checkpoint tables. The run manifest identifies source hashes, dependency versions, the current commit and working-tree status. The temporal protocol was specified after the original results in docs/temporal-audit-protocol.md. Full hourly graph mappings and traces remain in outputs/temporal; the compact bundle provides the summary tables and code to regenerate that archive. report/claims.json maps manuscript numbers to output cells; report/author-review.md gives the remaining personal checks.
+The analysis saves hourly tables, every deletion match and transition, snapshot incidences with source revision IDs, degree rankings, all sampled orders, integer component trajectories and checkpoint tables. The run manifest identifies source hashes, dependency versions, commit and working-tree status. The temporal protocol was specified after the original results in docs/temporal-audit-protocol.md. The candidate-pool and window controls are recorded separately in docs/final-review-controls.md. Full hourly graph mappings and traces are regenerated in outputs/temporal; the compact bundle contains summary tables and reproduction code. report/claims.json maps numerical claims to output cells.
 
 An independent direct-filter reconstruction agrees with all 504 hourly endpoints and all three full snapshot incidence sets. A forward NetworkX bipartite-removal implementation agrees with 33 sampled full trajectories across the three horizons. Synthetic tests cover exact expiry, refreshes, recreation, pre-event boundaries, same-page source collisions, label-based component size, isolates and exact subset enumeration. The temporal extension adds 336 exact incidence-set checks and 27 forward-removal trajectory checks. These are computational checks within the same project, not an external replication.
+
+The window controls add 845 incidence-set checks, seven forward-removal trajectories and agreement with all 608 earlier crossed-horizon checkpoints. Exact uniform coverage and miss probabilities agree with exhaustive small-set enumeration. The tests and numerical claim checks run alongside a complete source-copy reproduction without Git metadata.
 
 The audit found that the prior implementation protected an incidence refreshed at its exact expiry time, contrary to the frozen expiry-first rule. Removing that protection changed no hourly endpoints or transition totals in the observed data at any horizon. Page existence is now tracked independently of recent writers, so an expired page is not mistaken for a deleted one.
 
@@ -123,6 +130,8 @@ At 24h, the frozen graph has 376 resources, 826 labels and 2,471 incidences. At 
 
 ### Historical counts and exact small-graph distributions
 
+Of the week's 442 deletion actions, 345 match represented episodes: 54 have at least two live writers, 61 have one and 230 have none; 97 are unmatched. The frozen six-hour graph's component label counts are 8, 6, 4, 3, 2, 2 and 2.
+
 | W | Hourly peak | Activations | Deletion exits | Expiry exits | End surface |
 | --- | --- | --- | --- | --- | --- |
 | 1h | 112 | 1186 | 35 | 1151 | 0 |
@@ -143,6 +152,25 @@ One revision/deletion pair has touching one-second uncertainty intervals, on Jun
 
 <!-- pagebreak -->
 
+### Candidate-pool and evaluation-window controls
+
+For each tested evaluation window, the action pool and ranking use the same 24h graph. The budget is k=m, the number of resources eligible in the evaluation graph. Changing the evaluation window changes m and the original label set; results across rows therefore describe different conditional questions. Every nonempty hourly state is included. Empty-hour counts are 51, 21, 17 and 11 for 1h, 3h, 6h and 12h respectively.
+
+| Window | Nonempty hours | Degree misses | Misses for all ties | Expected uniform misses | Mean degree coverage |
+| --- | --- | --- | --- | --- | --- |
+| 1h | 117 | 64 | 63 | 74.6 | 17.2% |
+| 3h | 147 | 49 | 49 | 59.2 | 25.7% |
+| 6h | 151 | 20 | 20 | 29.0 | 38.9% |
+| 12h | 157 | 6 | 6 | 2.7 | 58.3% |
+
+Table 2. Post-result window controls. A miss means zero selected resources from the evaluation graph. Uniform expected misses sum the exact probabilities C(M-m,k)/C(M,k) over eligible hours. This expectation does not require independent hours and is not a significance test. Coverage is the fraction of m selected; means give each nonempty hour equal weight.
+
+The corresponding mean uniform coverages are 10.4%, 20.0%, 33.4% and 55.7%. Older-degree mean coverage exceeds these baselines at every tested window, despite its complete misses. At six hours it exceeds uniform expected coverage in 99 hours, equals it in seven and falls below it in 45. This is distinct from the 113 hours in which it improves on median uniform Q6: coverage and connectivity measure different properties.
+
+At frozen T, the 1h, 3h, 6h and 12h evaluation graphs contain 3, 11, 18 and 30 resources. Each receives that many actions, and none is selected under any older-degree tie ordering. Exact uniform miss probabilities are 97.6%, 71.8%, 40.5% and 7.4%. The complete miss is robust to these windows, but its rarity under random selection is not constant. The controls retain all four planned action fractions in outputs/review_controls.csv; this table emphasizes the previously chosen full recent-resource budget.
+
+<!-- pagebreak -->
+
 ## Appendix C. Limitations and Dual-Use Considerations
 
 **Observation and retention.** The available export is filtered by revision.write_date >= May 1, 2026. The first stored DSE revision in it is May 24. Historical state therefore reflects available records, not guaranteed complete prehistory. Missing short writes or missing pages can add unseen resources and incidences; missing deletion evidence can instead preserve an episode too long. Neither error direction is estimated here. In the full available history, 1,257 of 5,217 deletions are unmatched to a represented episode. A missing match does not imply that the original page never existed.
@@ -157,4 +185,4 @@ One revision/deletion pair has touching one-second uncertainty intervals, on Jun
 
 ## LLM Usage Statement
 
-Codex provided substantial assistance with repository inspection, methodological auditing, code and tests, execution of the analyses, interpretation checks, figures and this report draft. Earlier preparation and implementation also involved AI assistance, as described in the project history and author review notes. Numerical claims have been checked against saved outputs and independent computational implementations within this workflow. This is not a claim of independent human verification. The author must personally review the analysis, revise the prose and confirm this disclosure before submitting the final version.
+I used Codex for substantial assistance with code, tests, analysis execution, literature searches, figures and manuscript drafting. Earlier preparation and implementation also used LLM assistance. Numerical results were checked against saved outputs and separate computational implementations within the project.

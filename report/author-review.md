@@ -1,13 +1,15 @@
 # Personal review before submission
 
-The complete draft is `swarmtrace_draft.pdf`, with an editable Word version and
-`manuscript.md` as their shared source. It has four main pages. Numerical claims have
-computational checks, but this is still an AI-assisted draft, not your personal sign-off.
+The submission paper is `swarmtrace_paper.pdf`, with an editable Word version and
+`manuscript.md` as their shared source. It has four main pages. This personal checklist
+is kept outside the distributed artifact. Computational checks do not replace your
+reading and understanding of the paper.
 
 ## Decisions and details you must verify
 
-1. Confirm the name drawn from git metadata, Yazan Al-Dabain, and replace the affiliation
-   placeholder. Do not infer an institutional affiliation from your MSc background.
+1. Confirm the name drawn from git metadata, Yazan Al-Dabain. No affiliation was
+   supplied, so the paper omits that line. Add the affiliation if you want one shown;
+   none has been inferred from your MSc background.
 2. Read and revise the paper in your own words, particularly the interpretation and
    limitations. The template explicitly encourages a final version primarily written
    by the team. Confirm the LLM Usage Statement describes both this audit and earlier
@@ -22,17 +24,18 @@ computational checks, but this is still an AI-assisted draft, not your personal 
    schema inspection, dataset acquisition and methodological preparation on September
    10. Git records the first commit at September 10, 22:33 UTC. The implementation
    commits begin September 11. Keep that distinction visible.
-5. Decide how to make the artifact available. There is no configured git remote. A
-   reproducibility ZIP is prepared, but nothing has been published or uploaded. Working checkpoints are committed locally. Add the final artifact/repository URL in Code and Data, or provide it
-   through an allowed attachment route. The local file path is not a public URL.
+5. Decide how to make the artifact available. There is no configured git remote. The
+   paper names the supplied companion ZIP; no public URL is invented. Attach the ZIP
+   through an allowed route or host it and add the actual URL in Code and Data.
+   Nothing has been published or uploaded. Working checkpoints are committed locally.
 6. Check the event submission form and rubric. The official event page was retrieved;
    the rubric link embedded in the DOCX was not accessible through browsing. No claim
    is made that unseen form fields were checked. The event requires a PDF and a
    Limitations and Dual-Use Considerations appendix, both prepared here. The relevant
    track appears to be “What happened, and what breaks next”; confirm your selection.
-7. After revision, rebuild the documents, rerun `verify_claims.py`, and review the PDF
-   pagination. Remove the draft footer and replace pending-review language only after
-   completing your review. Do not change the original frozen preanalysis document.
+7. After any revision, rebuild the documents, rerun `verify_claims.py`, and review the
+   PDF pagination. Do not change the original frozen preanalysis document. The final
+   paper removes draft footers without claiming independent human verification.
 
 Deadline checked against the official event page: September 13 at 23:59 AoE,
 equivalent to September 14 at 13:59 in Budapest. Aim to submit earlier.
@@ -77,6 +80,25 @@ its endpoint. This does not make the action useless in reality. At frozen T, the
 18 older-degree resources include none of the 18 recent resources. Older-graph
 connectivity falls from 782 to 545 labels, while recent connectivity remains eight.
 The mismatch recurs at 20 hourly snapshots and is not a degree-tie artifact.
+
+**Does a complete miss establish that older degree is worse than random?** No. At
+frozen T, only 18 of 376 candidates are recent, so the exact uniform miss probability
+is 40.5%. The sum of uniform miss probabilities over 151 hourly graphs is 29.0,
+versus 20 observed older-degree misses. This is an expectation, not an incident-wide
+significance test. Older-degree mean coverage is also above uniform expectation at
+all four tested evaluation windows. The headline is the discrepancy between what
+historical fragmentation measures and which recent resources it reaches.
+
+**How sensitive is the finding to six hours?** At frozen T, the miss survives 1h,
+3h, 6h and 12h evaluation windows. Across hours its frequency and uniform baseline
+vary considerably, as Table 2 shows. None of these checks establishes the real
+information lifetime. The additional windows were specified after the main results.
+
+**What is new relative to the network literature?** Recency-sensitive targeting and
+differences between structural and functional robustness are established. SwarmTrace
+provides a reproducible DSEWiki case study, including explicit resource lifecycles,
+frozen and exploratory result provenance, and controlled ranking/evaluation comparisons.
+It does not introduce a targeting algorithm or demonstrate a containment effect.
 
 **Is recent-degree success tautological?** At the full recent-resource budget, yes:
 that ordering necessarily selects every recent resource. It is a reference that

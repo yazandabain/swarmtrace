@@ -405,6 +405,86 @@ def verify():
             value,
             "outputs/temporal_validation.json: " + key,
         )
+    controls = pd.read_csv(OUT / "review_controls.csv")
+    control_summary = pd.read_csv(OUT / "review_control_summary.csv")
+    for w, nonempty, misses, all_ties, expected_misses, mean_coverage, uniform_coverage in [
+        (1, 117, 64, 63, 74.6, 17.2, 10.4),
+        (3, 147, 49, 49, 59.2, 25.7, 20.0),
+        (6, 151, 20, 20, 29.0, 38.9, 33.4),
+        (12, 157, 6, 6, 2.7, 58.3, 55.7),
+    ]:
+        row = control_summary[
+            (control_summary.evaluation_hours == w) & (control_summary.requested_fraction == 1)
+        ].iloc[0]
+        for key, expected in [
+            ("nonempty_hours", nonempty),
+            ("empty_hours", 168 - nonempty),
+            ("older_zero_coverage_hours", misses),
+            ("zero_coverage_under_every_tie_order", all_ties),
+        ]:
+            check(
+                f"Table 2 W={w}: {key}",
+                int(row[key]),
+                expected,
+                f"outputs/review_control_summary.csv: W={w},fraction=1,{key}",
+            )
+        for key, scale, expected in [
+            ("uniform_expected_zero_coverage_hours", 1, expected_misses),
+            ("older_mean_coverage", 100, mean_coverage),
+            ("uniform_mean_expected_coverage", 100, uniform_coverage),
+        ]:
+            check(
+                f"Table 2 W={w}: {key}",
+                round(float(row[key]) * scale, 1),
+                expected,
+                f"outputs/review_control_summary.csv: W={w},fraction=1,{key},scale={scale}",
+            )
+    for w, resources, pzero in [(1, 3, 97.6), (3, 11, 71.8), (6, 18, 40.5), (12, 30, 7.4)]:
+        row = controls[
+            (controls.source == "frozen")
+            & (controls.evaluation_hours == w)
+            & (controls.requested_fraction == 1)
+        ].iloc[0]
+        for key, expected in [
+            ("recent_resources", resources),
+            ("k", resources),
+            ("tie_max_selected_recent", 0),
+        ]:
+            check(
+                f"Frozen window control W={w}: {key}",
+                int(row[key]),
+                expected,
+                f"outputs/review_controls.csv: frozen,W={w},fraction=1,{key}",
+            )
+        check(
+            f"Frozen window control W={w}: uniform miss percent",
+            round(100 * row.uniform_zero_coverage_probability, 1),
+            pzero,
+            f"outputs/review_controls.csv: frozen,W={w},fraction=1,uniform_zero_coverage_probability",
+        )
+    row = control_summary[
+        (control_summary.evaluation_hours == 6) & (control_summary.requested_fraction == 1)
+    ].iloc[0]
+    for comparison, expected in [("above", 99), ("equal", 7), ("below", 45)]:
+        key = f"coverage_{comparison}_uniform_expectation_hours"
+        check(
+            "6h coverage " + comparison + " uniform expectation",
+            int(row[key]),
+            expected,
+            "outputs/review_control_summary.csv: W=6,fraction=1," + key,
+        )
+    review_validation = json.loads((OUT / "review_control_validation.json").read_text())
+    for key, expected in [
+        ("full_incidence_oracle_checks", 845),
+        ("forward_trajectory_checks", 7),
+        ("original_crossed_checkpoint_matches", 608),
+    ]:
+        check(
+            "Final controls validation: " + key,
+            review_validation[key],
+            expected,
+            "outputs/review_control_validation.json: " + key,
+        )
     from swarmtrace.run import sha256
 
     check(
@@ -414,7 +494,16 @@ def verify():
         "docs/preanalysis.md",
     )
     (REPORT / "claims.json").write_text(
-        json.dumps({"verified_claims": len(claims), "claims": claims}, indent=2) + "\n"
+        json.dumps(
+            {
+                "verified_claims": len(claims),
+                "manuscript_sha256": sha256(REPORT / "manuscript.md"),
+                "verification_scope": "Explicit output-value assertions supporting this manuscript; prose interpretation and citations require separate review",
+                "claims": claims,
+            },
+            indent=2,
+        )
+        + "\n"
     )
     print(f"{len(claims)} numerical/provenance claims verified")
 

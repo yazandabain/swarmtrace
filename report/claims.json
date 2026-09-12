@@ -1,5 +1,7 @@
 {
-  "verified_claims": 126,
+  "verified_claims": 176,
+  "manuscript_sha256": "a76405cdedb5abf7bbf91a016423f15dd10072b0925a5876e42fc8df48f4306a",
+  "verification_scope": "Explicit output-value assertions supporting this manuscript; prose interpretation and citations require separate review",
   "claims": [
     {
       "claim": "revision coverage: total",
@@ -646,6 +648,256 @@
       "claim": "Temporal validation: forward_trajectory_checks",
       "verified_value": 27,
       "source": "outputs/temporal_validation.json: forward_trajectory_checks"
+    },
+    {
+      "claim": "Table 2 W=1: nonempty_hours",
+      "verified_value": 117,
+      "source": "outputs/review_control_summary.csv: W=1,fraction=1,nonempty_hours"
+    },
+    {
+      "claim": "Table 2 W=1: empty_hours",
+      "verified_value": 51,
+      "source": "outputs/review_control_summary.csv: W=1,fraction=1,empty_hours"
+    },
+    {
+      "claim": "Table 2 W=1: older_zero_coverage_hours",
+      "verified_value": 64,
+      "source": "outputs/review_control_summary.csv: W=1,fraction=1,older_zero_coverage_hours"
+    },
+    {
+      "claim": "Table 2 W=1: zero_coverage_under_every_tie_order",
+      "verified_value": 63,
+      "source": "outputs/review_control_summary.csv: W=1,fraction=1,zero_coverage_under_every_tie_order"
+    },
+    {
+      "claim": "Table 2 W=1: uniform_expected_zero_coverage_hours",
+      "verified_value": 74.6,
+      "source": "outputs/review_control_summary.csv: W=1,fraction=1,uniform_expected_zero_coverage_hours,scale=1"
+    },
+    {
+      "claim": "Table 2 W=1: older_mean_coverage",
+      "verified_value": 17.2,
+      "source": "outputs/review_control_summary.csv: W=1,fraction=1,older_mean_coverage,scale=100"
+    },
+    {
+      "claim": "Table 2 W=1: uniform_mean_expected_coverage",
+      "verified_value": 10.4,
+      "source": "outputs/review_control_summary.csv: W=1,fraction=1,uniform_mean_expected_coverage,scale=100"
+    },
+    {
+      "claim": "Table 2 W=3: nonempty_hours",
+      "verified_value": 147,
+      "source": "outputs/review_control_summary.csv: W=3,fraction=1,nonempty_hours"
+    },
+    {
+      "claim": "Table 2 W=3: empty_hours",
+      "verified_value": 21,
+      "source": "outputs/review_control_summary.csv: W=3,fraction=1,empty_hours"
+    },
+    {
+      "claim": "Table 2 W=3: older_zero_coverage_hours",
+      "verified_value": 49,
+      "source": "outputs/review_control_summary.csv: W=3,fraction=1,older_zero_coverage_hours"
+    },
+    {
+      "claim": "Table 2 W=3: zero_coverage_under_every_tie_order",
+      "verified_value": 49,
+      "source": "outputs/review_control_summary.csv: W=3,fraction=1,zero_coverage_under_every_tie_order"
+    },
+    {
+      "claim": "Table 2 W=3: uniform_expected_zero_coverage_hours",
+      "verified_value": 59.2,
+      "source": "outputs/review_control_summary.csv: W=3,fraction=1,uniform_expected_zero_coverage_hours,scale=1"
+    },
+    {
+      "claim": "Table 2 W=3: older_mean_coverage",
+      "verified_value": 25.7,
+      "source": "outputs/review_control_summary.csv: W=3,fraction=1,older_mean_coverage,scale=100"
+    },
+    {
+      "claim": "Table 2 W=3: uniform_mean_expected_coverage",
+      "verified_value": 20.0,
+      "source": "outputs/review_control_summary.csv: W=3,fraction=1,uniform_mean_expected_coverage,scale=100"
+    },
+    {
+      "claim": "Table 2 W=6: nonempty_hours",
+      "verified_value": 151,
+      "source": "outputs/review_control_summary.csv: W=6,fraction=1,nonempty_hours"
+    },
+    {
+      "claim": "Table 2 W=6: empty_hours",
+      "verified_value": 17,
+      "source": "outputs/review_control_summary.csv: W=6,fraction=1,empty_hours"
+    },
+    {
+      "claim": "Table 2 W=6: older_zero_coverage_hours",
+      "verified_value": 20,
+      "source": "outputs/review_control_summary.csv: W=6,fraction=1,older_zero_coverage_hours"
+    },
+    {
+      "claim": "Table 2 W=6: zero_coverage_under_every_tie_order",
+      "verified_value": 20,
+      "source": "outputs/review_control_summary.csv: W=6,fraction=1,zero_coverage_under_every_tie_order"
+    },
+    {
+      "claim": "Table 2 W=6: uniform_expected_zero_coverage_hours",
+      "verified_value": 29.0,
+      "source": "outputs/review_control_summary.csv: W=6,fraction=1,uniform_expected_zero_coverage_hours,scale=1"
+    },
+    {
+      "claim": "Table 2 W=6: older_mean_coverage",
+      "verified_value": 38.9,
+      "source": "outputs/review_control_summary.csv: W=6,fraction=1,older_mean_coverage,scale=100"
+    },
+    {
+      "claim": "Table 2 W=6: uniform_mean_expected_coverage",
+      "verified_value": 33.4,
+      "source": "outputs/review_control_summary.csv: W=6,fraction=1,uniform_mean_expected_coverage,scale=100"
+    },
+    {
+      "claim": "Table 2 W=12: nonempty_hours",
+      "verified_value": 157,
+      "source": "outputs/review_control_summary.csv: W=12,fraction=1,nonempty_hours"
+    },
+    {
+      "claim": "Table 2 W=12: empty_hours",
+      "verified_value": 11,
+      "source": "outputs/review_control_summary.csv: W=12,fraction=1,empty_hours"
+    },
+    {
+      "claim": "Table 2 W=12: older_zero_coverage_hours",
+      "verified_value": 6,
+      "source": "outputs/review_control_summary.csv: W=12,fraction=1,older_zero_coverage_hours"
+    },
+    {
+      "claim": "Table 2 W=12: zero_coverage_under_every_tie_order",
+      "verified_value": 6,
+      "source": "outputs/review_control_summary.csv: W=12,fraction=1,zero_coverage_under_every_tie_order"
+    },
+    {
+      "claim": "Table 2 W=12: uniform_expected_zero_coverage_hours",
+      "verified_value": 2.7,
+      "source": "outputs/review_control_summary.csv: W=12,fraction=1,uniform_expected_zero_coverage_hours,scale=1"
+    },
+    {
+      "claim": "Table 2 W=12: older_mean_coverage",
+      "verified_value": 58.3,
+      "source": "outputs/review_control_summary.csv: W=12,fraction=1,older_mean_coverage,scale=100"
+    },
+    {
+      "claim": "Table 2 W=12: uniform_mean_expected_coverage",
+      "verified_value": 55.7,
+      "source": "outputs/review_control_summary.csv: W=12,fraction=1,uniform_mean_expected_coverage,scale=100"
+    },
+    {
+      "claim": "Frozen window control W=1: recent_resources",
+      "verified_value": 3,
+      "source": "outputs/review_controls.csv: frozen,W=1,fraction=1,recent_resources"
+    },
+    {
+      "claim": "Frozen window control W=1: k",
+      "verified_value": 3,
+      "source": "outputs/review_controls.csv: frozen,W=1,fraction=1,k"
+    },
+    {
+      "claim": "Frozen window control W=1: tie_max_selected_recent",
+      "verified_value": 0,
+      "source": "outputs/review_controls.csv: frozen,W=1,fraction=1,tie_max_selected_recent"
+    },
+    {
+      "claim": "Frozen window control W=1: uniform miss percent",
+      "verified_value": 97.6,
+      "source": "outputs/review_controls.csv: frozen,W=1,fraction=1,uniform_zero_coverage_probability"
+    },
+    {
+      "claim": "Frozen window control W=3: recent_resources",
+      "verified_value": 11,
+      "source": "outputs/review_controls.csv: frozen,W=3,fraction=1,recent_resources"
+    },
+    {
+      "claim": "Frozen window control W=3: k",
+      "verified_value": 11,
+      "source": "outputs/review_controls.csv: frozen,W=3,fraction=1,k"
+    },
+    {
+      "claim": "Frozen window control W=3: tie_max_selected_recent",
+      "verified_value": 0,
+      "source": "outputs/review_controls.csv: frozen,W=3,fraction=1,tie_max_selected_recent"
+    },
+    {
+      "claim": "Frozen window control W=3: uniform miss percent",
+      "verified_value": 71.8,
+      "source": "outputs/review_controls.csv: frozen,W=3,fraction=1,uniform_zero_coverage_probability"
+    },
+    {
+      "claim": "Frozen window control W=6: recent_resources",
+      "verified_value": 18,
+      "source": "outputs/review_controls.csv: frozen,W=6,fraction=1,recent_resources"
+    },
+    {
+      "claim": "Frozen window control W=6: k",
+      "verified_value": 18,
+      "source": "outputs/review_controls.csv: frozen,W=6,fraction=1,k"
+    },
+    {
+      "claim": "Frozen window control W=6: tie_max_selected_recent",
+      "verified_value": 0,
+      "source": "outputs/review_controls.csv: frozen,W=6,fraction=1,tie_max_selected_recent"
+    },
+    {
+      "claim": "Frozen window control W=6: uniform miss percent",
+      "verified_value": 40.5,
+      "source": "outputs/review_controls.csv: frozen,W=6,fraction=1,uniform_zero_coverage_probability"
+    },
+    {
+      "claim": "Frozen window control W=12: recent_resources",
+      "verified_value": 30,
+      "source": "outputs/review_controls.csv: frozen,W=12,fraction=1,recent_resources"
+    },
+    {
+      "claim": "Frozen window control W=12: k",
+      "verified_value": 30,
+      "source": "outputs/review_controls.csv: frozen,W=12,fraction=1,k"
+    },
+    {
+      "claim": "Frozen window control W=12: tie_max_selected_recent",
+      "verified_value": 0,
+      "source": "outputs/review_controls.csv: frozen,W=12,fraction=1,tie_max_selected_recent"
+    },
+    {
+      "claim": "Frozen window control W=12: uniform miss percent",
+      "verified_value": 7.4,
+      "source": "outputs/review_controls.csv: frozen,W=12,fraction=1,uniform_zero_coverage_probability"
+    },
+    {
+      "claim": "6h coverage above uniform expectation",
+      "verified_value": 99,
+      "source": "outputs/review_control_summary.csv: W=6,fraction=1,coverage_above_uniform_expectation_hours"
+    },
+    {
+      "claim": "6h coverage equal uniform expectation",
+      "verified_value": 7,
+      "source": "outputs/review_control_summary.csv: W=6,fraction=1,coverage_equal_uniform_expectation_hours"
+    },
+    {
+      "claim": "6h coverage below uniform expectation",
+      "verified_value": 45,
+      "source": "outputs/review_control_summary.csv: W=6,fraction=1,coverage_below_uniform_expectation_hours"
+    },
+    {
+      "claim": "Final controls validation: full_incidence_oracle_checks",
+      "verified_value": 845,
+      "source": "outputs/review_control_validation.json: full_incidence_oracle_checks"
+    },
+    {
+      "claim": "Final controls validation: forward_trajectory_checks",
+      "verified_value": 7,
+      "source": "outputs/review_control_validation.json: forward_trajectory_checks"
+    },
+    {
+      "claim": "Final controls validation: original_crossed_checkpoint_matches",
+      "verified_value": 608,
+      "source": "outputs/review_control_validation.json: original_crossed_checkpoint_matches"
     },
     {
       "claim": "frozen methodology hash",

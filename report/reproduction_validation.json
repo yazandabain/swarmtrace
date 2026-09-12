@@ -11,9 +11,9 @@
     "pandas": "3.0.5"
   },
   "limitation": "Checks repeatability in this environment, not independent external replication",
-  "files_compared": 693,
+  "files_compared": 697,
   "simulation_arrays_compared": 3410,
-  "source_files_verified": 23,
+  "source_files_verified": 27,
   "data_sha256": {
     "events.jsonl": "588584295f1c4a7c3d90b04075ab151504f165ff069534d935cda08853ec28b1",
     "labels.jsonl": "d94aecd84baecda46344f5b8726a95a9c81e7e41a1c0969fc89a90c8906f0388",
@@ -176,6 +176,22 @@
     },
     {
       "file": "recreation_evidence.csv",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "review_control_states.csv",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "review_control_summary.csv",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "review_control_validation.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "review_controls.csv",
       "comparison": "byte identical"
     },
     {

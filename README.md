@@ -10,16 +10,17 @@ hourly survey finds that degree targeting beats median uniform withdrawal in 138
 151 nonempty six-hour graphs at the 25% budget. A separate comparison fixes candidates
 and the six-hour evaluation graph: at the frozen time, the top 18 resources ranked by
 24-hour degree include none of the 18 recent resources. This complete miss occurs at
-20 of 151 hourly snapshots, under every valid older-degree tie ordering. Fragmenting
-historical overlap need not reach the recently shared surface. Neither metric measures
-communication loss or containment.
+20 of 151 hourly snapshots, under every valid older-degree tie ordering. Uniform
+withdrawal would produce 29.0 such misses in expectation; complete misses alone do
+not show that degree targeting is worse than random. Fragmenting historical overlap
+need not reach the recently shared surface. Neither metric measures communication
+loss or containment.
 
 ## Read the submission
 
-- [PDF draft](report/swarmtrace_draft.pdf): four main pages, references and three appendices.
-- [Editable Word draft](report/swarmtrace_draft.docx).
+- [Paper PDF](report/swarmtrace_paper.pdf): four main pages, references and three appendices.
+- [Editable Word version](report/swarmtrace_paper.docx).
 - [Manuscript source](report/manuscript.md): edit this to regenerate both documents.
-- [Author review and defense notes](report/author-review.md).
 - [Verified claim ledger](report/claims.json).
 - [Compact source and evidence archive](report/swarmtrace_artifact.zip).
 - [Audit findings](docs/audit.md), [frozen plan](docs/preanalysis.md), and
@@ -29,7 +30,7 @@ The PDF uses the official template's embedded Old Standard TT fonts, Letter page
 size, one-inch margins, title/abstract box and section order. The DOCX is generated
 from the native template package. Word pagination can differ from the verified PDF.
 The source template is supplied locally, remains unmodified and is not redistributed
-in the artifact bundle. The affiliation and publication details need author review.
+in the artifact bundle.
 
 ## Reproduce
 
@@ -52,7 +53,8 @@ No live wiki access is needed. Raw data are not included in this repository or b
 The command runs both frozen experiments at 1h, 6h and 24h, independent reconstruction
 checks, 500 uniform permutations and 500 degree-tie permutations per horizon, exact
 small-graph enumeration, clock/exclusion diagnostics and publication figures. With `--with-temporal-audit`, it
-also runs every hourly 6h/24h snapshot and the common-candidate ranking comparison. It uses
+also runs every hourly 6h/24h snapshot, the common-candidate ranking comparison and
+the final 1h/3h/6h/12h evaluation-window and exact candidate-pool controls. It uses
 CPU only and no paid service. Use `--output-dir /tmp/swarmtrace-check` for an isolated
 reproduction, or `--primary-only` to skip the initial post-result extensions and paper figures.
 The full temporal run takes several minutes and produces about 115 MB of compressed
@@ -94,6 +96,8 @@ sets a temporary Matplotlib cache and uses the noninteractive Agg backend.
 | `outputs/temporal_checkpoints.csv` | All hourly graph-level withdrawal checkpoints |
 | `outputs/crossed_hourly.csv` | Common-candidate comparisons evaluated on recent topology |
 | `outputs/crossed_tie_bounds.csv` | Exact recent-resource coverage bounds over degree ties |
+| `outputs/review_controls.csv` | Every final window/control checkpoint, including exact uniform baselines |
+| `outputs/review_control_summary.csv` | All window/budget summaries, including empty-hour counts |
 | `outputs/analysis_validation.json` | Independent oracle and forward-removal checks |
 | `outputs/run_manifest.json` | Data, code, environment and output hashes |
 

@@ -21,10 +21,12 @@ def selected_files():
         "data": ["README.md"],
         "outputs": ["*.csv", "*.json", "*.npz"],
         "outputs/figures": ["paper_*.png", "paper_*.pdf", "paper_*.svg", "figure1_live_surface.png"],
-        "report": ["*.py", "*.md", "*.json", "swarmtrace_draft.pdf", "swarmtrace_draft.docx"],
+        "report": ["*.py", "*.md", "*.json", "swarmtrace_paper.pdf", "swarmtrace_paper.docx"],
     }.items():
         for pattern in patterns:
             files.update((ROOT / folder).glob(pattern))
+    # Keep the personal submission checklist outside the distributable research artifact.
+    files.discard(ROOT / "report" / "author-review.md")
     return sorted(files)
 
 
@@ -32,15 +34,14 @@ def build():
     payload = {str(p.relative_to(ROOT)): p.read_bytes() for p in selected_files()}
     payload["BUNDLE_README.txt"] = (
         b"SwarmTrace source and evidence archive\n\n"
-        b"Start with README.md, report/swarmtrace_draft.pdf and report/author-review.md.\n"
-        b"This is a draft requiring the author's personal review before submission.\n"
+        b"Start with README.md and report/swarmtrace_paper.pdf.\n"
         b"The archive excludes raw data, Git history, caches and the original template.\n"
         b"Read data/README.md for the pinned public source and required hashes.\n"
         b"Run the analysis with --with-temporal-audit to regenerate the large hourly\n"
         b"trace archive, which is omitted here; all hourly summary tables are included.\n"
         b"The source works without Git metadata. The run manifest records the source\n"
         b"hashes at analysis time; it also lists regenerated files outside this bundle.\n"
-        b"Rebuilding the draft requires the original local Apart DOCX template.\n"
+        b"Rebuilding the paper requires the original local Apart DOCX template.\n"
         b"BUNDLE_MANIFEST.json lists SHA-256 hashes of every other bundled file.\n"
     )
     manifest = {

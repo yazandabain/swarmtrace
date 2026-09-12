@@ -1,63 +1,74 @@
 {
-  "abstract_words": 172,
-  "total_pdf_pages": 9,
+  "abstract_words": 177,
+  "total_pdf_pages": 10,
+  "main_pdf_pages": 4,
   "pages": [
     {
       "page": 1,
-      "words": 395,
-      "first_text": "Draft for author review | 1\nSwarmTrace: activity windows and resource\ntargeting in DSEWiki\nYazan Al-Dabain\n[Affiliation to confirm]\nWith Apa",
-      "last_text": "armTrace applies these\nconcerns to an incident-response measurement task, with explicit deletion and expiry\naccounting.\n"
+      "words": 398,
+      "first_text": "1\nSwarmTrace: activity windows and resource\ntargeting in DSEWiki\nYazan Al-Dabain\nWith Apart Research\nAbstract\nSwarmTrace audits how an activ",
+      "last_text": "ntrolled comparison\nof activity windows. It neither introduces a temporal centrality nor evaluates future\ntransmission.\n"
     },
     {
       "page": 2,
-      "words": 458,
-      "first_text": "Draft for author review | 2\n3. Methods\nData and identity. I use the pinned explorer-schema-2 export [2], verified against five\nSHA-256 hashe",
-      "last_text": "e extensions, not replacements for the frozen test.\nProtocols, validation and full traces are documented in Appendix A.\n"
+      "words": 454,
+      "first_text": "2\n3. Methods\nData and identity. The pinned explorer-schema-2 export [2] matches five frozen SHA-256\nhashes. DSEWiki supplies 13,403 revision",
+      "last_text": "nsions are post-result\nand descriptive; adjacent hours are dependent. Appendix A records their sequence and\nvalidation.\n"
     },
     {
       "page": 3,
-      "words": 348,
-      "first_text": "Draft for author review | 3\n4. Results\nReconstruction and frozen test. At 6h, 1,101 activations balance 54 deletion exits and 1,047\nexpiry e",
-      "last_text": "s older ranking often helps, but its historical\nfragmentation result does not establish coverage of the recent surface.\n"
+      "words": 288,
+      "first_text": "3\n4. Results\nReconstruction and frozen test. At 6h, 1,101 activations balance 54 deletion exits and 1,047\nexpiry exits. Only 54 of 442 delet",
+      "last_text": "strates disagreement\nbetween historical fragmentation and recent coverage, not general inferiority to random\ntargeting.\n"
     },
     {
       "page": 4,
-      "words": 475,
-      "first_text": "Draft for author review | 4\n5. Discussion and Limitations\nThe frozen experiment alone would support an incomplete account. It finds little a",
-      "last_text": ". Appendix A gives\nreproduction commands. Raw revision bodies and the supplied template are not included in the\nbundle.\n"
+      "words": 410,
+      "first_text": "4\n5. Discussion and Limitations\nDegree targeting usually outperforms median uniform withdrawal on the graph that supplies its\nranking. The f",
+      "last_text": "Wiki export [2]. Appendix A specifies reproduction. The archive\nexcludes raw revision bodies and the supplied template.\n"
     },
     {
       "page": 5,
-      "words": 87,
-      "first_text": "Draft for author review | 5\nReferences\n[1] Sydney Von Arx, Cormac Slade Byrd, Spencer Kitts, and Thomas Larsen. 2026. Discovery\nof a new Ope",
-      "last_text": " and Jari Saramaki. 2012. Temporal networks. Physics Reports 519, 97-125.\nhttps://doi.org/10.1016/j.physrep.2012.03.001\n"
+      "words": 132,
+      "first_text": "5\nReferences\n[1] Sydney Von Arx, Cormac Slade Byrd, Spencer Kitts, and Thomas Larsen. 2026. Discovery\nof a new OpenAI agent message board. N",
+      "last_text": "rks: reachability,\ncentrality and robustness. Royal Society Open Science 3, 160196.\nhttps://doi.org/10.1098/rsos.160196\n"
     },
     {
       "page": 6,
-      "words": 404,
-      "first_text": "Draft for author review | 6\nAppendix A. Reproduction and audit trail\nThe original plan is docs/preanalysis.md, frozen in commit\nbf16642717ca",
+      "words": 428,
+      "first_text": "6\nAppendix A. Reproduction and audit trail\nThe original plan is docs/preanalysis.md, frozen in commit\nbf16642717ca69aff04e201158c5e7352dceb7",
       "last_text": "n. Page existence is now tracked\nindependently of recent writers, so an expired page is not mistaken for a deleted one.\n"
     },
     {
       "page": 7,
-      "words": 186,
-      "first_text": "Draft for author review | 7\nAppendix B. Frozen results and supplemental checks\nFigure 2. Six-hour reconstruction during June 16-22. The uppe",
+      "words": 181,
+      "first_text": "7\nAppendix B. Frozen results and supplemental checks\nFigure 2. Six-hour reconstruction during June 16-22. The upper panel shows active multi",
       "last_text": "mpled uniform order does as well at this budget. This is a fixed-graph\nsensitivity result, not evidence of containment.\n"
     },
     {
       "page": 8,
-      "words": 369,
-      "first_text": "Draft for author review | 8\nHistorical counts and exact small-graph distributions\nW\nHourly peak\nActivations\nDeletion exits\nExpiry exits\nEnd ",
+      "words": 407,
+      "first_text": "8\nHistorical counts and exact small-graph distributions\nOf the week's 442 deletion actions, 345 match represented episodes: 54 have at least",
       "last_text": "including\nfallback linkage. They are not counted as additional writes, and they do not substitute for\nlifecycle replay.\n"
     },
     {
       "page": 9,
-      "words": 516,
-      "first_text": "Draft for author review | 9\nAppendix C. Limitations and Dual-Use Considerations\nObservation and retention. The available export is filtered ",
-      "last_text": " must personally review the analysis, revise the\nprose and confirm this disclosure before submitting the final version.\n"
+      "words": 310,
+      "first_text": "9\nCandidate-pool and evaluation-window controls\nFor each tested evaluation window, the action pool and ranking use the same 24h graph. The\nb",
+      "last_text": "tion fractions in outputs/review_controls.csv; this table emphasizes the previously\nchosen full recent-resource budget.\n"
+    },
+    {
+      "page": 10,
+      "words": 466,
+      "first_text": "10\nAppendix C. Limitations and Dual-Use Considerations\nObservation and retention. The available export is filtered by revision.write_date >=",
+      "last_text": "ce. Numerical results were checked against saved outputs and separate computational\nimplementations within the project.\n"
     }
   ],
   "template": "Copy of Apart Research hackathon submission template.docx",
+  "template_sha256": "1bf131c18818ecaaac36abeeeead54c45afc90b3b96e61874a9d7e302c66f694",
+  "manuscript_sha256": "a76405cdedb5abf7bbf91a016423f15dd10072b0925a5876e42fc8df48f4306a",
+  "pdf_sha256": "5f45c6dafb8c52b9433500f0277d4fe910fe9caaf786acbf509282352440b628",
+  "docx_sha256": "e1e714ef893da4e0b81b5251ce43b9fd01b584b9fa97ba897c1a915d3a47a7df",
   "font": "Embedded Old Standard TT from template",
   "page_geometry": "US Letter, one-inch margins",
   "rendering": "DOCX from native package; PDF from shared manuscript and template font/style"

@@ -5,6 +5,7 @@ Letter page geometry, margins, heading sizes, and bordered title/abstract arrang
 No office suite is required. Both are rendered from the same Markdown blocks.
 """
 
+import hashlib
 import html
 import json
 import re
@@ -117,7 +118,7 @@ def docx_render(title, author, affiliation, abstract, content):
     cell = header.cell(1, 0)
     p = cell.add_paragraph()
     p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    set_text(p, author + "\n" + affiliation, 11)
+    set_text(p, author + ("\n" + affiliation if affiliation else ""), 11)
     p = cell.add_paragraph()
     p.alignment = WD_ALIGN_PARAGRAPH.CENTER
     set_text(p, "With Apart Research", 11)
@@ -161,11 +162,11 @@ def docx_render(title, author, affiliation, abstract, content):
             set_text(doc.add_paragraph(), value, 9 if kind == "caption" else 11)
     footer = doc.sections[0].footer.paragraphs[0]
     footer.alignment = WD_ALIGN_PARAGRAPH.RIGHT
-    set_text(footer, "Draft for author review | ", 8)
+    set_text(footer, "", 8)
     field = OxmlElement("w:fldSimple")
     field.set(qn("w:instr"), "PAGE")
     footer._p.append(field)
-    dest = REPORT / "swarmtrace_draft.docx"
+    dest = REPORT / "swarmtrace_paper.docx"
     doc.save(dest)
     return dest
 
@@ -231,7 +232,7 @@ def pdf_render(title, author, affiliation, abstract, content):
     center = ParagraphStyle("author", parent=body, alignment=1, spaceAfter=5)
     title_p = Paragraph(inline(title), title_style)
     header_body = [
-        Paragraph(inline(author) + "<br/>" + inline(affiliation), center),
+        Paragraph(inline(author) + ("<br/>" + inline(affiliation) if affiliation else ""), center),
         Paragraph("With Apart Research", center),
         Paragraph("<b>Abstract</b>", body),
         Paragraph(inline(abstract), body),
@@ -271,9 +272,12 @@ def pdf_render(title, author, affiliation, abstract, content):
                 ]
                 for i, row in enumerate(value)
             ]
-            widths = (
-                [28, 106, 44, 65, 75, 75, 75] if len(value[0]) == 7 else [35, 74, 92, 92, 92, 83]
-            )
+            if value[0][0] == "Window":
+                widths = [43, 75, 80, 93, 94, 83]
+            elif len(value[0]) == 7:
+                widths = [28, 106, 44, 65, 75, 75, 75]
+            else:
+                widths = [35, 74, 92, 92, 92, 83]
             table = Table(cells, colWidths=widths, repeatRows=1, hAlign="LEFT")
             table.setStyle(
                 TableStyle(
@@ -296,9 +300,9 @@ def pdf_render(title, author, affiliation, abstract, content):
     def footer(canvas, document):
         canvas.setFont("Apart-regular", 8)
         canvas.setFillColor(colors.HexColor("#666666"))
-        canvas.drawRightString(540, 40, f"Draft for author review | {document.page}")
+        canvas.drawRightString(540, 40, str(document.page))
 
-    dest = REPORT / "swarmtrace_draft.pdf"
+    dest = REPORT / "swarmtrace_paper.pdf"
     doc = SimpleDocTemplate(
         str(dest),
         pagesize=(612, 792),
@@ -309,6 +313,7 @@ def pdf_render(title, author, affiliation, abstract, content):
         title=title,
         author=author,
         allowSplitting=1,
+        invariant=1,
     )
     doc.build(story, onFirstPage=footer, onLaterPages=footer)
     return dest
@@ -317,9 +322,17 @@ def pdf_render(title, author, affiliation, abstract, content):
 def main():
     source = (REPORT / "manuscript.md").read_text()
     assert "\u2014" not in source, "No em dashes in the manuscript"
+    for unfinished in [
+        "[Affiliation to confirm]",
+        "pending author",
+        "Draft for author review",
+        "The author must personally",
+    ]:
+        assert unfinished not in source, f"Resolve final-paper text: {unfinished}"
     title = source.splitlines()[0][2:]
     author = re.search(r"^Author: (.*)$", source, re.MULTILINE).group(1)
-    affiliation = re.search(r"^Affiliation: (.*)$", source, re.MULTILINE).group(1)
+    affiliation_match = re.search(r"^Affiliation:[ \t]*(.*)$", source, re.MULTILINE)
+    affiliation = affiliation_match.group(1) if affiliation_match else ""
     abstract = source.split("## Abstract\n\n")[1].split("\n\n## 1.")[0]
     assert 150 <= len(abstract.split()) <= 250
     content = blocks("## 1." + source.split("\n\n## 1.", 1)[1])
@@ -329,6 +342,8 @@ def main():
     review = []
     preview = REPORT / "preview"
     preview.mkdir(exist_ok=True)
+    for old in preview.glob("page-*.png"):
+        old.unlink()
     for i, page in enumerate(pdf):
         text = page.get_text()
         page.get_pixmap(matrix=pymupdf.Matrix(1.2, 1.2)).save(preview / f"page-{i + 1}.png")
@@ -345,8 +360,15 @@ def main():
             {
                 "abstract_words": len(abstract.split()),
                 "total_pdf_pages": len(pdf),
+                "main_pdf_pages": next(
+                    i for i, page in enumerate(pdf) if "References" in page.get_text().splitlines()
+                ),
                 "pages": review,
                 "template": TEMPLATE.name,
+                "template_sha256": hashlib.sha256(TEMPLATE.read_bytes()).hexdigest(),
+                "manuscript_sha256": hashlib.sha256(source.encode()).hexdigest(),
+                "pdf_sha256": hashlib.sha256(pdf_path.read_bytes()).hexdigest(),
+                "docx_sha256": hashlib.sha256(docx_path.read_bytes()).hexdigest(),
                 "font": "Embedded Old Standard TT from template",
                 "page_geometry": "US Letter, one-inch margins",
                 "rendering": "DOCX from native package; PDF from shared manuscript and template font/style",
