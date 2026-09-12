@@ -59,16 +59,16 @@
     },
     {
       "page": 10,
-      "words": 492,
+      "words": 493,
       "first_text": "10\nAppendix C. Limitations and Dual-Use Considerations\nObservation and retention. The available export is filtered by revision.write_date >=",
       "last_text": "\noutputs and computational checks described in Appendix A. I take responsibility for the final\nanalysis and submission.\n"
     }
   ],
   "template": "Copy of Apart Research hackathon submission template.docx",
   "template_sha256": "1bf131c18818ecaaac36abeeeead54c45afc90b3b96e61874a9d7e302c66f694",
-  "manuscript_sha256": "dc6559558a4f74c5dc48c5ac8ca0a94695ebf57f57e4645df7ec3b22a15f0fb0",
-  "pdf_sha256": "6a15f1e038a2ffa01f9f40db87508002046a07a2fc476c87656051e4ab2250f6",
-  "docx_sha256": "29ea679e0ba00fa8f4d40d0d905ecf02184b12541129766000e8441df312fc0b",
+  "manuscript_sha256": "9e98dbdc974daa40224eb3df91b7a33ae4c89c56dd5e1efeeaa07fbc7a614649",
+  "pdf_sha256": "3c9036512e39d8f6cfa72e88f310578df3f37a0a3066cb5eff8df35f9f813cc0",
+  "docx_sha256": "aaeaf5512a991e6d0ca3f0c2aa254bd99eb4b51dce79962f0a648841eedfd182",
   "font": "Embedded Old Standard TT from template",
   "page_geometry": "US Letter, one-inch margins",
   "rendering": "DOCX from native package; PDF from shared manuscript and template font/style"
