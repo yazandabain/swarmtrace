@@ -1,119 +1,248 @@
 # SwarmTrace
 
-SwarmTrace reconstructs recent multi-writer activity in the DSEWiki incident and
-stress-tests a frozen historical label-resource graph under resource withdrawal.
-It measures observed write overlap, not communication, agent identity, information
-loss or containment.
+**Auditing Temporal Mismatch in Resource Targeting During the DSEWiki Incident**
 
-The frozen six-hour snapshot shows little targeting advantage, but an exploratory
-hourly survey finds that degree targeting beats median uniform withdrawal in 138 of
-151 nonempty six-hour graphs at the 25% budget. A separate comparison fixes candidates
-and the six-hour evaluation graph: at the frozen time, the top 18 resources ranked by
-24-hour degree include none of the 18 recent resources. This complete miss occurs at
-20 of 151 hourly snapshots, under every valid older-degree tie ordering. Uniform
-withdrawal would produce 29.0 such misses in expectation; complete misses alone do
-not show that degree targeting is worse than random. Fragmenting historical overlap
-need not reach the recently shared surface. Neither metric measures communication
-loss or containment.
+SwarmTrace reconstructs recent multi-writer activity in the DSEWiki incident and studies how the time window used to rank shared resources changes what an intervention actually reaches.
 
-## Read the submission
+The project replays archived revisions and deletion events, reconstructs resource lifecycles, builds temporal label-resource graphs, and compares degree-based resource targeting with uniform withdrawal.
 
-- [Paper PDF](report/swarmtrace_paper.pdf): four main pages, references and three appendices.
-- [Editable Word version](report/swarmtrace_paper.docx).
-- [Manuscript source](report/manuscript.md): edit this to regenerate both documents.
-- [Verified claim ledger](report/claims.json).
-- [Compact source and evidence archive](report/swarmtrace_artifact.zip).
-- [Audit findings](docs/audit.md), [frozen plan](docs/preanalysis.md), and
-  [submission requirements](docs/submission-requirements.md).
+Developed for the **Apart Research AI Incident Response Sprint, September 2026**.
 
-The PDF uses the official template's embedded Old Standard TT fonts, Letter page
-size, one-inch margins, title/abstract box and section order. The DOCX is generated
-from the native template package. Word pagination can differ from the verified PDF.
-The source template is supplied locally, remains unmodified and is not redistributed
-in the artifact bundle.
+## Main finding
+
+Degree targeting often fragments the graph used to construct the ranking, but historical fragmentation and recent-resource coverage are not the same thing.
+
+At the frozen evaluation time:
+
+- the six-hour graph contains **18 active multi-writer resources**
+- the first **18 resources ranked by 24-hour degree contain none of those 18 recent resources**
+- withdrawing those historical hubs reduces the older graph's largest-label component from **782 to 545**
+- the recent six-hour graph is left unchanged
+
+That complete miss should not be overinterpreted. Only 18 of 376 candidates are recent at that time, so uniform withdrawal also has a **40.5% probability** of missing the six-hour surface completely.
+
+Across the hourly audit, older-degree targeting produces **20 complete misses across 151 nonempty six-hour snapshots**, compared with **29.0 expected under uniform withdrawal**.
+
+The result is therefore not that historical degree targeting is generally worse than random. It is that:
+
+> **A ranking can strongly fragment historical overlap while reaching a different resource surface from the one currently active.**
+
+These are structural measurements. They do not establish communication loss, information deletion, agent identity, or containment.
+
+![Exploratory temporal targeting audit](outputs/figures/paper_figure1_temporal.png)
+
+## Paper
+
+- [Final paper](report/swarmtrace_paper.pdf)
+- [Manuscript source](report/manuscript.md)
+- [Verified claim ledger](report/claims.json)
+- [Frozen pre-analysis plan](docs/preanalysis.md)
+- [Audit notes](docs/audit.md)
+
+The paper contains four main pages followed by references and appendices.
+
+## Method
+
+SwarmTrace:
+
+1. reconstructs page episodes from revisions and successful deletion events
+2. tracks recent label-resource incidences under fixed activity windows
+3. marks a resource multi-writer when at least two qualifying labels are recently active on it
+4. reconstructs the live multi-writer surface over the reporting week
+5. compares static degree targeting with seeded uniform resource withdrawal
+6. preserves a frozen six-hour primary snapshot with one-hour and 24-hour sensitivities
+7. runs explicitly post-result hourly and cross-window audits
+
+Labels are observable identifiers, not authenticated agents.
+
+Resource overlap is treated only as a structural proxy. It is not assumed to imply reading, communication, coordination, or dependency.
+
+## Key results
+
+### Historical reconstruction
+
+For the primary six-hour window:
+
+- **1,101** activations
+- **54** deletion exits
+- **1,047** expiry exits
+- hourly peak of **331** active multi-writer resources
+- **442** successful deletion actions
+
+Only 54 deletion actions hit a resource that was multi-writer at that moment. This is an accounting result, not a measure of moderator effectiveness.
+
+### Frozen withdrawal test
+
+The frozen six-hour graph contains:
+
+- **18 resources**
+- **27 labels**
+- **40 incidences**
+
+The primary result is weak. At nine withdrawals, **35.1% of all possible nine-resource subsets perform at least as well as the fixed degree ordering** on the chosen connectivity endpoint.
+
+That negative result is retained rather than replaced with a more favorable snapshot.
+
+### Hourly audit
+
+At a 25% resource budget, six-hour degree targeting beats median uniform withdrawal in:
+
+- **138 of 151** nonempty hourly graphs
+- ties in **9**
+- loses in **4**
+
+The frozen six-hour result is therefore unusual within the observed week.
+
+### Cross-window audit
+
+The analysis then fixes the candidate pool and recent evaluation graph while changing the history used for ranking.
+
+At the frozen time, 24-hour degree targeting completely misses the six-hour surface.
+
+Across the week, however, older-degree targeting still has better mean coverage than uniform expectation at every tested evaluation window.
+
+This is why the paper separates:
+
+- historical fragmentation
+- recent-resource coverage
+- deletion accounting
+
+rather than treating any one of them as containment.
 
 ## Reproduce
 
-Python 3.12 and [uv](https://docs.astral.sh/uv/) are required. Dependencies are pinned
-in `uv.lock`. The normal analysis does not require the optional document packages.
+Requirements:
+
+- Python 3.12
+- [uv](https://docs.astral.sh/uv/)
+
+Install dependencies:
 
 ```bash
 uv sync --locked
-uv run python -m swarmtrace.run --data-dir ~/code/swarmtrace-data --with-temporal-audit
+```
+
+Obtain the pinned ProWiki export described in [data/README.md](data/README.md).
+
+The analysis expects:
+
+```text
+pages.jsonl
+revisions.jsonl
+events.jsonl
+labels.jsonl
+manifest.json
+```
+
+Run the full workflow:
+
+```bash
+uv run python -m swarmtrace.run \
+  --data-dir /path/to/swarmtrace-data \
+  --with-temporal-audit
+```
+
+Run the tests and checks:
+
+```bash
 uv run pytest -q
 uv run ruff check .
 uv run python report/verify_claims.py
 ```
 
-The raw directory must contain the five files listed in [data/README.md](data/README.md).
-The runner checks their frozen SHA-256 hashes before doing any analysis. Obtain them
-from the pinned [public export](https://github.com/JoshuaDavid/WikiAgentSwarmInvestigation/tree/9bc20957b9d3b40cce3f7ee7827e9001a6256a7f/agent-logs/prowiki).
-No live wiki access is needed. Raw data are not included in this repository or bundle.
+Current verified state:
 
-The command runs both frozen experiments at 1h, 6h and 24h, independent reconstruction
-checks, 500 uniform permutations and 500 degree-tie permutations per horizon, exact
-small-graph enumeration, clock/exclusion diagnostics and publication figures. With `--with-temporal-audit`, it
-also runs every hourly 6h/24h snapshot, the common-candidate ranking comparison and
-the final 1h/3h/6h/12h evaluation-window and exact candidate-pool controls. It uses
-CPU only and no paid service. Use `--output-dir /tmp/swarmtrace-check` for an isolated
-reproduction, or `--primary-only` to skip the initial post-result extensions and paper figures.
-The full temporal run takes several minutes and produces about 115 MB of compressed
-trace archives under `outputs/temporal/`. These are regenerated rather than committed
-or included in the compact ZIP; the complete hourly tables and summary evidence are
-included. Each archive uses lossless unsigned integers, saved seeds and graph mappings.
-
-```bash
-uv sync --locked --group report
-uv run --group report python report/build_submission.py
+```text
+40 tests passed
+176 numerical/provenance claims verified
 ```
 
-Place `Copy of Apart Research hackathon submission template.docx` in the repository
-root before rebuilding documents. The PDF renderer reads its embedded fonts and
-formatting; it does not require LibreOffice. `report/preview/` contains page images,
-and `report/render_validation.json` records pagination. Editing the Word document
-alone will not update the Markdown source or PDF.
+For an isolated reproduction:
 
-In a restricted environment, set `UV_CACHE_DIR` to a writable directory. Analysis
-sets a temporary Matplotlib cache and uses the noninteractive Agg backend.
+```bash
+uv run python -m swarmtrace.run \
+  --data-dir /path/to/swarmtrace-data \
+  --with-temporal-audit \
+  --output-dir /tmp/swarmtrace-check
 
-## Evidence files
+uv run python report/verify_reproduction.py /tmp/swarmtrace-check
+```
 
-| Output | Meaning |
-| --- | --- |
-| `outputs/summary.json` | Historical and snapshot totals by horizon |
-| `outputs/hourly_w*.csv` | 168 hourly states and transition counts per horizon |
-| `outputs/deletions_w*.csv` | Every deletion, episode match and live-writer count |
-| `outputs/transitions_w*.csv` | Event-level activation, deletion and expiry transitions |
-| `outputs/snapshot_w*.json` | Original labels and eligible resource episodes |
-| `outputs/snapshot_incidences_w*.csv` | Each edge's latest qualifying revision ID and time |
-| `outputs/degree_ranking_w*.csv` | Static rankings with explicit tie order |
-| `outputs/withdrawal_w*.csv` | R, D, Q, G and pointwise simulation envelopes at every k |
-| `outputs/simulations_w*.npz` | All resource orders and integer component-size trajectories |
-| `outputs/checkpoints.csv` | Planned action fractions with actual rounded counts |
-| `outputs/exact_distributions_w*.csv` | Exact uniform and degree-tie subset probabilities |
-| `outputs/hub_recency.csv` | Why the 24h hubs disappear from shorter-horizon graphs |
-| `outputs/*sensitivity.csv` | Clearly labeled post-result audit extensions |
-| `outputs/temporal_checkpoints.csv` | All hourly graph-level withdrawal checkpoints |
-| `outputs/crossed_hourly.csv` | Common-candidate comparisons evaluated on recent topology |
-| `outputs/crossed_tie_bounds.csv` | Exact recent-resource coverage bounds over degree ties |
-| `outputs/review_controls.csv` | Every final window/control checkpoint, including exact uniform baselines |
-| `outputs/review_control_summary.csv` | All window/budget summaries, including empty-hour counts |
-| `outputs/analysis_validation.json` | Independent oracle and forward-removal checks |
-| `outputs/run_manifest.json` | Data, code, environment and output hashes |
+The full analysis runs on CPU and requires no paid service.
 
-`simulations_w*.npz` orders index the resources in `snapshot_w*.json`. Column k of
-`*_counts` is the largest number of original labels in any connected component after
-k withdrawals. Divide by the fixed original label count for R, or by column zero for Q.
-All-removed R is 1/|L| because isolated labels are retained.
+## Data
 
-After an isolated full reproduction, compare every table, figure, graph mapping and
-simulation array with `uv run python report/verify_reproduction.py /tmp/swarmtrace-check`.
-The generated `report/reproduction_validation.json` records the comparisons. The
-source-copy audit also uses `--require-no-git` to check archive portability.
-Build the compact archive with `uv run python report/package_artifact.py`; it includes
-a file-by-file SHA-256 manifest and excludes the large hourly trace archive.
+Source data are not redistributed in this repository.
 
-Top-level derived tables, frozen simulations, validation and paper figures are
-versioned. The large hourly trace archive remains on disk and can be regenerated
-from the compact reproducibility ZIP. Working checkpoints are committed locally
-after validation. Nothing has been published or submitted.
+SwarmTrace uses the pinned public ProWiki export from:
+
+[JoshuaDavid/WikiAgentSwarmInvestigation](https://github.com/JoshuaDavid/WikiAgentSwarmInvestigation/tree/9bc20957b9d3b40cce3f7ee7827e9001a6256a7f/agent-logs/prowiki)
+
+Exact hashes and provenance are documented in [data/README.md](data/README.md) and the paper.
+
+Raw revision bodies and full IP addresses are not committed.
+
+## Repository structure
+
+```text
+src/swarmtrace/   analysis implementation
+tests/            unit and regression tests
+docs/             frozen plans, protocols and audit notes
+data/             data provenance and acquisition instructions
+outputs/          derived results, validation outputs and figures
+report/           manuscript, final paper and claim verification
+```
+
+Large temporal trace archives are regenerated rather than committed.
+
+## Reproducibility
+
+The original analysis plan was frozen before the primary experiment results and is preserved in:
+
+[`docs/preanalysis.md`](docs/preanalysis.md)
+
+Post-result analyses are documented separately rather than presented as preregistered work.
+
+The repository includes:
+
+- source-data hash verification
+- seeded random baselines
+- exact small-graph enumeration
+- degree-tie sensitivity checks
+- independent incidence reconstruction
+- independent graph-removal checks
+- clock and boundary diagnostics
+- ambiguous-label sensitivity checks
+- cross-window controls
+- numerical manuscript claim verification
+
+Weak and negative results are retained rather than replaced by more favorable exploratory outcomes.
+
+## Limitations
+
+SwarmTrace does **not** establish that:
+
+- labels correspond one-to-one with real agents
+- co-writing implies communication
+- a resource was read or required by another writer
+- deleting a resource removes information copied elsewhere
+- graph fragmentation implies containment
+- six hours is the correct information-lifetime window
+
+The source export is incomplete by construction, and the withdrawal experiments assume equal-cost actions, no adaptation, no migration, and no resource recreation during the frozen counterfactual.
+
+See the paper for the full limitations and dual-use discussion.
+
+## LLM use
+
+I used Codex for substantial assistance with code, tests, analysis execution, literature searches, figures, and manuscript drafting. Earlier preparation and implementation also used LLM assistance.
+
+I personally reviewed the methodology, code, analyses, figures, and manuscript, reran the project workflow, and verified the reported numerical results against the saved outputs and computational checks documented in the repository.
+
+I take responsibility for the final analysis and submission.
+
+## Author
+
+**Yazan Al-Dabain**
+
+GitHub: [@yazandabain](https://github.com/yazandabain)

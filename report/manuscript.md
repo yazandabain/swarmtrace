@@ -1,4 +1,4 @@
-# SwarmTrace: activity windows and resource targeting in DSEWiki
+# SwarmTrace: Auditing Temporal Mismatch in Resource Targeting During the DSEWiki Incident
 
 Author: Yazan Al-Dabain
 With: Apart Research
@@ -76,7 +76,9 @@ Degree targeting often fragments observed co-writing more than uniform withdrawa
 
 ## Code and Data
 
-Code, tests and derived evidence are provided in the companion archive swarmtrace_artifact.zip. Source data are the pinned ProWiki export [2]. Appendix A specifies reproduction. The archive excludes raw revision bodies and the supplied template.
+Code, tests, derived outputs, figures, and reproduction instructions are available in the public SwarmTrace GitHub repository: https://github.com/yazandabain/swarmtrace
+
+Source data are the pinned ProWiki export [2] and are not redistributed in the repository. Appendix A specifies the exact data version, hashes, and reproduction commands.
 
 <!-- pagebreak -->
 
@@ -185,4 +187,4 @@ At frozen T, the 1h, 3h, 6h and 12h evaluation graphs contain 3, 11, 18 and 30 r
 
 ## LLM Usage Statement
 
-I used Codex for substantial assistance with code, tests, analysis execution, literature searches, figures and manuscript drafting. Earlier preparation and implementation also used LLM assistance. Numerical results were checked against saved outputs and separate computational implementations within the project.
+I used Codex for substantial assistance with code, tests, analysis execution, literature searches, figures, and manuscript drafting. Earlier preparation and implementation also used LLM assistance. I personally reviewed the methodology, code, analyses, figures, and manuscript, reran the project workflow, and verified the reported numerical results against the saved outputs and computational checks described in Appendix A. I take responsibility for the final analysis and submission.

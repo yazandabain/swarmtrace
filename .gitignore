@@ -21,3 +21,8 @@ outputs/figures/*.pdf
 outputs/figures/*.svg
 report/preview/
 report/*.zip
+
+# Local submission files
+Copy of Apart Research hackathon submission template.docx
+Copy of Apart Research hackathon submission template.docx:Zone.Identifier
+report/~$*

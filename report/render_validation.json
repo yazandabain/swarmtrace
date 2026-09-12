@@ -5,8 +5,8 @@
   "pages": [
     {
       "page": 1,
-      "words": 398,
-      "first_text": "1\nSwarmTrace: activity windows and resource\ntargeting in DSEWiki\nYazan Al-Dabain\nWith Apart Research\nAbstract\nSwarmTrace audits how an activ",
+      "words": 401,
+      "first_text": "1\nSwarmTrace: Auditing Temporal Mismatch in\nResource Targeting During the DSEWiki Incident\nYazan Al-Dabain\nWith Apart Research\nAbstract\nSwar",
       "last_text": "ntrolled comparison\nof activity windows. It neither introduces a temporal centrality nor evaluates future\ntransmission.\n"
     },
     {
@@ -23,9 +23,9 @@
     },
     {
       "page": 4,
-      "words": 410,
+      "words": 419,
       "first_text": "4\n5. Discussion and Limitations\nDegree targeting usually outperforms median uniform withdrawal on the graph that supplies its\nranking. The f",
-      "last_text": "Wiki export [2]. Appendix A specifies reproduction. The archive\nexcludes raw revision bodies and the supplied template.\n"
+      "last_text": "re not redistributed in the repository.\nAppendix A specifies the exact data version, hashes, and reproduction commands.\n"
     },
     {
       "page": 5,
@@ -59,16 +59,16 @@
     },
     {
       "page": 10,
-      "words": 466,
+      "words": 492,
       "first_text": "10\nAppendix C. Limitations and Dual-Use Considerations\nObservation and retention. The available export is filtered by revision.write_date >=",
-      "last_text": "ce. Numerical results were checked against saved outputs and separate computational\nimplementations within the project.\n"
+      "last_text": "\noutputs and computational checks described in Appendix A. I take responsibility for the final\nanalysis and submission.\n"
     }
   ],
   "template": "Copy of Apart Research hackathon submission template.docx",
   "template_sha256": "1bf131c18818ecaaac36abeeeead54c45afc90b3b96e61874a9d7e302c66f694",
-  "manuscript_sha256": "a76405cdedb5abf7bbf91a016423f15dd10072b0925a5876e42fc8df48f4306a",
-  "pdf_sha256": "5f45c6dafb8c52b9433500f0277d4fe910fe9caaf786acbf509282352440b628",
-  "docx_sha256": "e1e714ef893da4e0b81b5251ce43b9fd01b584b9fa97ba897c1a915d3a47a7df",
+  "manuscript_sha256": "dc6559558a4f74c5dc48c5ac8ca0a94695ebf57f57e4645df7ec3b22a15f0fb0",
+  "pdf_sha256": "6a15f1e038a2ffa01f9f40db87508002046a07a2fc476c87656051e4ab2250f6",
+  "docx_sha256": "29ea679e0ba00fa8f4d40d0d905ecf02184b12541129766000e8441df312fc0b",
   "font": "Embedded Old Standard TT from template",
   "page_geometry": "US Letter, one-inch margins",
   "rendering": "DOCX from native package; PDF from shared manuscript and template font/style"
