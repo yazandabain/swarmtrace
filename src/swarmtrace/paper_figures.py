@@ -164,6 +164,14 @@ def generate_temporal(output):
     folder = output / "figures"
     df = pd.read_csv(output / "crossed_hourly.csv", parse_dates=["time"])
     df = df[df.requested_fraction_of_recent_resources == 1.0]
+    # Exact pool-size control replaces the sampled coverage median in the final figure.
+    controls = pd.read_csv(output / "review_controls.csv", parse_dates=["time"])
+    controls = controls[
+        (controls.source == "hourly")
+        & (controls.evaluation_hours == 6)
+        & (controls.requested_fraction == 1)
+    ]
+    df = df.merge(controls[["time", "uniform_expected_coverage"]], on="time", validate="one_to_one")
     original = pd.read_csv(output / "temporal_checkpoints.csv", parse_dates=["time"])
     fig, axes = plt.subplots(2, 1, figsize=(6.5, 3.05), sharex=True, layout="constrained")
     for w, color in [(6, "#21658c"), (24, "#a23e2d")]:
@@ -194,11 +202,11 @@ def generate_temporal(output):
     )
     axes[1].plot(
         full.index,
-        full.recent_resource_coverage_uniform_median,
+        full.uniform_expected_coverage,
         color="#666666",
         linestyle=":",
         linewidth=1.1,
-        label="Uniform median",
+        label="Uniform expectation",
     )
     axes[1].plot(
         full.index,
