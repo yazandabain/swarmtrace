@@ -1,0 +1,20 @@
+{
+  "1": {
+    "conservation_checks": 168,
+    "forward_removal_trajectory_checks": 11,
+    "hourly_oracle_checks": 168,
+    "snapshot_exact_incidence_match": true
+  },
+  "24": {
+    "conservation_checks": 168,
+    "forward_removal_trajectory_checks": 11,
+    "hourly_oracle_checks": 168,
+    "snapshot_exact_incidence_match": true
+  },
+  "6": {
+    "conservation_checks": 168,
+    "forward_removal_trajectory_checks": 11,
+    "hourly_oracle_checks": 168,
+    "snapshot_exact_incidence_match": true
+  }
+}

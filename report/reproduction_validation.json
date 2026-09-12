@@ -1,0 +1,2798 @@
+{
+  "passed": true,
+  "command": "python -m swarmtrace.run --data-dir /path/to/data --with-temporal-audit",
+  "execution": "Full analysis with optional temporal audit",
+  "git_metadata_absent": true,
+  "python": "3.12.14",
+  "packages": {
+    "matplotlib": "3.11.1",
+    "networkx": "3.6.1",
+    "numpy": "2.5.3",
+    "pandas": "3.0.5"
+  },
+  "limitation": "Checks repeatability in this environment, not independent external replication",
+  "files_compared": 693,
+  "simulation_arrays_compared": 3410,
+  "source_files_verified": 23,
+  "data_sha256": {
+    "events.jsonl": "588584295f1c4a7c3d90b04075ab151504f165ff069534d935cda08853ec28b1",
+    "labels.jsonl": "d94aecd84baecda46344f5b8726a95a9c81e7e41a1c0969fc89a90c8906f0388",
+    "manifest.json": "b6d53e16b5d9a6a0a98d4577238835ee7a574d7d10a8f1312330b4e626c6ba2b",
+    "pages.jsonl": "92b296170b496b836cdf5ef783bed9465d2d75db7e1a0becec1c36c8b7c42cfd",
+    "revisions.jsonl": "60df4a515178230aa952d9f64f6215aea4bd95ab2f05e31e484cf9b887e3f793"
+  },
+  "comparisons": [
+    {
+      "file": "ambiguous_label_sensitivity.csv",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "analysis_validation.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "checkpoints.csv",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "clock_audit.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "clock_order_sensitivity.csv",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "crossed_frozen_snapshot.csv",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "crossed_hourly.csv",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "crossed_tie_bounds.csv",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "crossed_tie_summary.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "degree_ranking_w1.csv",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "degree_ranking_w24.csv",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "degree_ranking_w6.csv",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "deletions_w1.csv",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "deletions_w24.csv",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "deletions_w6.csv",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "diagnostics_validation.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "exact_checkpoints.csv",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "exact_distributions_w1.csv",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "exact_distributions_w6.csv",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "excluded_revisions.csv",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "figures/figure1_live_surface.png",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "figures/paper_figure1_temporal.pdf",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "figures/paper_figure1_temporal.png",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "figures/paper_figure1_temporal.svg",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "figures/paper_figure2_history.pdf",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "figures/paper_figure2_history.png",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "figures/paper_figure2_history.svg",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "figures/paper_figure3_withdrawal.pdf",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "figures/paper_figure3_withdrawal.png",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "figures/paper_figure3_withdrawal.svg",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "figures/paper_figure4_exact.pdf",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "figures/paper_figure4_exact.png",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "figures/paper_figure4_exact.svg",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "hourly_w1.csv",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "hourly_w24.csv",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "hourly_w6.csv",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "hub_recency.csv",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "recreation_audit.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "recreation_evidence.csv",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "simulations_w1.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "simulations_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "simulations_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "snapshot_clock_sensitivity.csv",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "snapshot_incidences_w1.csv",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "snapshot_incidences_w24.csv",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "snapshot_incidences_w6.csv",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "snapshot_w1.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "snapshot_w24.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "snapshot_w6.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "summary.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/frozen_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/frozen_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_001_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_002_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_003_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_004_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_005_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_006_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_007_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_008_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_008_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_008_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_008_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_009_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_009_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_009_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_009_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_010_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_010_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_010_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_010_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_011_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_011_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_011_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_011_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_012_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_012_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_012_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_012_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_013_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_013_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_013_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_013_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_014_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_014_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_014_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_014_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_015_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_015_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_015_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_015_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_016_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_016_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_016_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_016_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_017_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_017_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_017_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_017_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_018_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_018_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_018_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_018_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_019_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_019_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_019_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_019_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_020_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_020_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_020_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_020_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_021_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_021_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_021_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_021_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_022_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_022_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_022_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_022_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_023_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_023_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_023_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_023_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_024_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_024_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_024_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_024_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_025_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_025_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_025_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_025_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_026_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_026_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_026_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_026_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_027_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_027_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_027_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_027_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_028_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_028_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_028_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_028_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_029_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_029_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_029_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_029_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_030_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_030_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_030_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_030_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_031_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_031_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_031_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_031_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_032_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_032_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_032_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_032_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_033_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_033_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_033_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_033_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_034_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_034_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_034_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_034_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_035_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_035_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_035_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_035_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_036_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_036_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_036_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_036_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_037_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_037_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_037_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_037_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_038_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_038_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_038_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_038_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_039_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_039_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_039_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_039_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_040_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_040_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_040_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_040_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_041_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_041_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_041_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_041_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_042_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_042_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_042_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_042_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_043_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_043_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_043_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_043_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_044_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_044_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_044_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_044_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_045_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_045_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_045_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_045_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_046_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_046_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_046_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_046_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_047_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_047_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_047_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_047_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_048_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_048_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_048_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_048_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_049_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_049_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_049_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_049_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_050_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_050_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_050_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_050_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_051_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_051_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_051_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_051_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_052_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_052_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_052_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_052_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_053_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_053_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_053_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_053_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_054_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_054_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_054_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_054_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_055_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_055_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_055_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_055_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_056_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_056_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_056_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_056_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_057_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_057_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_057_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_057_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_058_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_058_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_058_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_058_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_059_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_059_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_059_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_059_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_060_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_060_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_060_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_060_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_061_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_061_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_061_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_061_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_062_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_062_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_062_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_062_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_063_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_063_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_063_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_063_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_064_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_064_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_064_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_064_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_065_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_065_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_065_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_065_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_066_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_066_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_066_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_066_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_067_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_067_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_067_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_067_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_068_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_068_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_068_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_068_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_069_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_069_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_069_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_069_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_070_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_070_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_070_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_070_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_071_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_071_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_071_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_071_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_072_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_072_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_072_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_072_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_073_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_073_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_073_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_073_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_074_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_074_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_074_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_074_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_075_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_075_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_075_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_075_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_076_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_076_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_076_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_076_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_077_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_077_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_077_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_077_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_078_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_078_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_078_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_078_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_079_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_079_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_079_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_079_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_080_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_080_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_080_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_080_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_081_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_081_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_081_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_081_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_082_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_082_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_082_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_082_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_083_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_083_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_083_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_083_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_084_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_084_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_084_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_084_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_085_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_085_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_085_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_085_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_086_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_086_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_086_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_086_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_087_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_087_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_087_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_087_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_088_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_088_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_088_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_088_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_089_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_089_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_089_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_089_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_090_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_090_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_090_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_090_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_091_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_091_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_091_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_091_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_092_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_092_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_092_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_092_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_093_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_093_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_093_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_093_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_094_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_094_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_094_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_094_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_095_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_095_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_095_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_095_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_096_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_096_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_096_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_096_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_097_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_097_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_097_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_097_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_098_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_098_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_098_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_098_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_099_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_099_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_099_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_099_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_100_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_100_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_100_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_100_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_101_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_101_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_101_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_101_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_102_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_102_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_102_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_102_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_103_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_103_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_103_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_103_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_104_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_104_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_104_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_104_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_105_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_105_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_105_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_105_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_106_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_106_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_106_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_106_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_107_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_107_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_107_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_107_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_108_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_108_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_108_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_108_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_109_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_109_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_109_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_109_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_110_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_110_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_110_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_110_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_111_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_111_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_111_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_111_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_112_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_112_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_112_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_112_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_113_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_113_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_113_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_113_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_114_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_114_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_114_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_114_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_115_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_115_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_115_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_115_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_116_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_116_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_116_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_116_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_117_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_117_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_117_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_117_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_118_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_118_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_118_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_118_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_119_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_119_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_119_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_119_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_120_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_120_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_120_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_120_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_121_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_121_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_121_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_121_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_122_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_122_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_122_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_122_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_123_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_123_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_123_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_123_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_124_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_124_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_124_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_124_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_125_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_125_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_125_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_125_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_126_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_126_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_126_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_126_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_127_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_127_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_127_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_127_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_128_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_128_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_128_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_128_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_129_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_129_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_129_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_129_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_130_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_130_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_130_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_130_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_131_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_131_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_131_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_131_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_132_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_132_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_132_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_132_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_133_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_133_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_133_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_133_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_134_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_134_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_134_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_134_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_135_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_135_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_135_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_135_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_136_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_136_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_136_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_136_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_137_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_137_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_137_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_137_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_138_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_138_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_138_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_138_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_139_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_139_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_139_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_139_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_140_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_140_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_140_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_140_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_141_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_141_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_141_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_141_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_142_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_142_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_142_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_142_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_143_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_143_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_143_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_143_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_144_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_144_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_144_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_144_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_145_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_145_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_145_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_145_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_146_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_146_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_146_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_146_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_147_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_147_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_147_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_147_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_148_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_148_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_148_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_148_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_149_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_149_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_149_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_149_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_150_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_150_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_150_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_150_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_151_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_151_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_151_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_151_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_152_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_152_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_152_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_152_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_153_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_153_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_153_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_153_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_154_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_154_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_154_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_154_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_155_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_155_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_155_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_155_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_156_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_156_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_156_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_156_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_157_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_157_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_157_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_157_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_158_crossed.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_158_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_158_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_158_w6.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_159_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_159_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_160_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_160_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_161_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_161_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_162_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_162_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_163_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_163_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_164_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_164_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_165_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_165_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_166_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_166_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_167_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_167_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal/hour_168_graphs.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal/hour_168_w24.npz",
+      "comparison": "every array equal"
+    },
+    {
+      "file": "temporal_checkpoints.csv",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal_summary.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "temporal_validation.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "transitions_w1.csv",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "transitions_w24.csv",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "transitions_w6.csv",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "validation.json",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "withdrawal_w1.csv",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "withdrawal_w24.csv",
+      "comparison": "byte identical"
+    },
+    {
+      "file": "withdrawal_w6.csv",
+      "comparison": "byte identical"
+    }
+  ]
+}

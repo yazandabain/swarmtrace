@@ -1,0 +1,7 @@
+horizon_hours,requested_fraction,k,degree_component_labels,uniform_component_p05,uniform_component_median,uniform_component_p95,uniform_probability_at_least_as_disruptive,tie_component_min,tie_component_median,tie_component_max,uniform_subsets,degree_tie_subsets
+1,0.1,1,3,3.0,4.0,4.0,0.3333333333333333,3,3.0,3,3,1
+1,0.25,1,3,3.0,4.0,4.0,0.3333333333333333,3,3.0,3,3,1
+1,0.5,2,2,2.0,2.0,3.0,0.6666666666666666,2,2.0,2,3,2
+6,0.1,2,8,6.0,7.0,8.0,1.0,6,7.0,8,153,6
+6,0.25,5,6,5.0,6.0,8.0,0.6186974789915967,5,6.0,6,8568,14
+6,0.5,9,4,3.0,5.0,7.0,0.3506787330316742,3,4.0,6,48620,2002

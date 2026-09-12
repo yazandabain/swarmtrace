@@ -1,0 +1,5 @@
+{
+  "forward_trajectory_checks": 27,
+  "full_incidence_oracle_checks": 336,
+  "hourly_snapshots": 168
+}

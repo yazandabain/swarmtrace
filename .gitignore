@@ -12,3 +12,12 @@ outputs/*
 !outputs/figures/
 !outputs/validation.json
 !outputs/figures/**
+
+# Reviewable derived analysis, without the large regenerated hourly trace archive.
+!outputs/*.csv
+!outputs/*.json
+!outputs/*.npz
+outputs/figures/*.pdf
+outputs/figures/*.svg
+report/preview/
+report/*.zip

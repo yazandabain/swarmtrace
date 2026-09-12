@@ -1,0 +1,24 @@
+{
+  "delete_clock_grades": {
+    "rclog": 1,
+    "reqlog": 5216
+  },
+  "delete_uncertainty_seconds": {
+    "1": 5217
+  },
+  "overlapping_revision_delete_uncertainty_intervals": [
+    {
+      "event_id": "delete:dse:rclog:146261",
+      "page_key": "dse~OECDEducationEquitySequence",
+      "rev_id": "dse~OECDEducationEquitySequence@13",
+      "revision_minus_delete_seconds": -2.0
+    }
+  ],
+  "revision_clock_grades": {
+    "rclog": 44,
+    "reqlog": 13359
+  },
+  "revision_uncertainty_seconds": {
+    "1": 13403
+  }
+}

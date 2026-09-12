@@ -1,0 +1,25 @@
+{
+  "export_provenance": {
+    "cutoff_unix_ts": 1782120004,
+    "exact_revision_refs": 58,
+    "fallback_revision_refs": 6,
+    "method": "derived_from_rclog",
+    "native_revert_request_rows": 4,
+    "null_revision_request_action_histogram": {
+      "form_edit": 4
+    },
+    "population_id": "first_recreation_relations",
+    "reason": "No row-level 68-event data file is present beside findings/deletion-response/W1-RESURRECTION.md; rows were derived with CLOCK-AUDIT.md section 3's first-later-edit rule.",
+    "request_action_histogram": {
+      "form_edit": 64,
+      "revert": 4
+    },
+    "revision_link_rule": "Use the same page/label/IP save within two seconds when held; otherwise link the first later stored non-admin save and mark that limitation in clock_note.",
+    "stored_relation_edges": 64,
+    "stored_relation_revisions": 63
+  },
+  "linked_edges": 64,
+  "linked_revision_count": 63,
+  "missing_event_links": 0,
+  "page_mismatches": 0
+}

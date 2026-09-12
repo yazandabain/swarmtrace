@@ -1,0 +1,64 @@
+{
+  "abstract_words": 172,
+  "total_pdf_pages": 9,
+  "pages": [
+    {
+      "page": 1,
+      "words": 395,
+      "first_text": "Draft for author review | 1\nSwarmTrace: activity windows and resource\ntargeting in DSEWiki\nYazan Al-Dabain\n[Affiliation to confirm]\nWith Apa",
+      "last_text": "armTrace applies these\nconcerns to an incident-response measurement task, with explicit deletion and expiry\naccounting.\n"
+    },
+    {
+      "page": 2,
+      "words": 458,
+      "first_text": "Draft for author review | 2\n3. Methods\nData and identity. I use the pinned explorer-schema-2 export [2], verified against five\nSHA-256 hashe",
+      "last_text": "e extensions, not replacements for the frozen test.\nProtocols, validation and full traces are documented in Appendix A.\n"
+    },
+    {
+      "page": 3,
+      "words": 348,
+      "first_text": "Draft for author review | 3\n4. Results\nReconstruction and frozen test. At 6h, 1,101 activations balance 54 deletion exits and 1,047\nexpiry e",
+      "last_text": "s older ranking often helps, but its historical\nfragmentation result does not establish coverage of the recent surface.\n"
+    },
+    {
+      "page": 4,
+      "words": 475,
+      "first_text": "Draft for author review | 4\n5. Discussion and Limitations\nThe frozen experiment alone would support an incomplete account. It finds little a",
+      "last_text": ". Appendix A gives\nreproduction commands. Raw revision bodies and the supplied template are not included in the\nbundle.\n"
+    },
+    {
+      "page": 5,
+      "words": 87,
+      "first_text": "Draft for author review | 5\nReferences\n[1] Sydney Von Arx, Cormac Slade Byrd, Spencer Kitts, and Thomas Larsen. 2026. Discovery\nof a new Ope",
+      "last_text": " and Jari Saramaki. 2012. Temporal networks. Physics Reports 519, 97-125.\nhttps://doi.org/10.1016/j.physrep.2012.03.001\n"
+    },
+    {
+      "page": 6,
+      "words": 404,
+      "first_text": "Draft for author review | 6\nAppendix A. Reproduction and audit trail\nThe original plan is docs/preanalysis.md, frozen in commit\nbf16642717ca",
+      "last_text": "n. Page existence is now tracked\nindependently of recent writers, so an expired page is not mistaken for a deleted one.\n"
+    },
+    {
+      "page": 7,
+      "words": 186,
+      "first_text": "Draft for author review | 7\nAppendix B. Frozen results and supplemental checks\nFigure 2. Six-hour reconstruction during June 16-22. The uppe",
+      "last_text": "mpled uniform order does as well at this budget. This is a fixed-graph\nsensitivity result, not evidence of containment.\n"
+    },
+    {
+      "page": 8,
+      "words": 369,
+      "first_text": "Draft for author review | 8\nHistorical counts and exact small-graph distributions\nW\nHourly peak\nActivations\nDeletion exits\nExpiry exits\nEnd ",
+      "last_text": "including\nfallback linkage. They are not counted as additional writes, and they do not substitute for\nlifecycle replay.\n"
+    },
+    {
+      "page": 9,
+      "words": 516,
+      "first_text": "Draft for author review | 9\nAppendix C. Limitations and Dual-Use Considerations\nObservation and retention. The available export is filtered ",
+      "last_text": " must personally review the analysis, revise the\nprose and confirm this disclosure before submitting the final version.\n"
+    }
+  ],
+  "template": "Copy of Apart Research hackathon submission template.docx",
+  "font": "Embedded Old Standard TT from template",
+  "page_geometry": "US Letter, one-inch margins",
+  "rendering": "DOCX from native package; PDF from shared manuscript and template font/style"
+}

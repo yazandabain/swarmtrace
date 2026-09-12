@@ -1,0 +1,656 @@
+{
+  "verified_claims": 126,
+  "claims": [
+    {
+      "claim": "revision coverage: total",
+      "verified_value": 13403,
+      "source": "outputs/validation.json: revisions.actor_counts.total"
+    },
+    {
+      "claim": "revision coverage: suspicious",
+      "verified_value": 13372,
+      "source": "outputs/validation.json: revisions.actor_counts.suspicious"
+    },
+    {
+      "claim": "revision coverage: moderator",
+      "verified_value": 26,
+      "source": "outputs/validation.json: revisions.actor_counts.moderator"
+    },
+    {
+      "claim": "revision coverage: ambiguous",
+      "verified_value": 5,
+      "source": "outputs/validation.json: revisions.actor_counts.ambiguous"
+    },
+    {
+      "claim": "revision coverage: missing",
+      "verified_value": 0,
+      "source": "outputs/validation.json: revisions.actor_counts.missing"
+    },
+    {
+      "claim": "all successful deletions",
+      "verified_value": 5217,
+      "source": "outputs/validation.json: deletes.total"
+    },
+    {
+      "claim": "history W=1: hourly_endpoint_peak",
+      "verified_value": 112,
+      "source": "outputs/summary.json: 1.history.hourly_endpoint_peak"
+    },
+    {
+      "claim": "history W=1: activations",
+      "verified_value": 1186,
+      "source": "outputs/summary.json: 1.history.activations"
+    },
+    {
+      "claim": "history W=1: deletion_exits",
+      "verified_value": 35,
+      "source": "outputs/summary.json: 1.history.deletion_exits"
+    },
+    {
+      "claim": "history W=1: inactivity_exits",
+      "verified_value": 1151,
+      "source": "outputs/summary.json: 1.history.inactivity_exits"
+    },
+    {
+      "claim": "history W=1: surface_end",
+      "verified_value": 0,
+      "source": "outputs/summary.json: 1.history.surface_end"
+    },
+    {
+      "claim": "W=1 conservation",
+      "verified_value": 0,
+      "source": "outputs/summary.json: 1.history"
+    },
+    {
+      "claim": "W=1 deletion actions",
+      "verified_value": 442,
+      "source": "outputs/summary.json: 1.history.delete_actions"
+    },
+    {
+      "claim": "history W=6: hourly_endpoint_peak",
+      "verified_value": 331,
+      "source": "outputs/summary.json: 6.history.hourly_endpoint_peak"
+    },
+    {
+      "claim": "history W=6: activations",
+      "verified_value": 1101,
+      "source": "outputs/summary.json: 6.history.activations"
+    },
+    {
+      "claim": "history W=6: deletion_exits",
+      "verified_value": 54,
+      "source": "outputs/summary.json: 6.history.deletion_exits"
+    },
+    {
+      "claim": "history W=6: inactivity_exits",
+      "verified_value": 1047,
+      "source": "outputs/summary.json: 6.history.inactivity_exits"
+    },
+    {
+      "claim": "history W=6: surface_end",
+      "verified_value": 0,
+      "source": "outputs/summary.json: 6.history.surface_end"
+    },
+    {
+      "claim": "W=6 conservation",
+      "verified_value": 0,
+      "source": "outputs/summary.json: 6.history"
+    },
+    {
+      "claim": "W=6 deletion actions",
+      "verified_value": 442,
+      "source": "outputs/summary.json: 6.history.delete_actions"
+    },
+    {
+      "claim": "history W=24: hourly_endpoint_peak",
+      "verified_value": 379,
+      "source": "outputs/summary.json: 24.history.hourly_endpoint_peak"
+    },
+    {
+      "claim": "history W=24: activations",
+      "verified_value": 1066,
+      "source": "outputs/summary.json: 24.history.activations"
+    },
+    {
+      "claim": "history W=24: deletion_exits",
+      "verified_value": 87,
+      "source": "outputs/summary.json: 24.history.deletion_exits"
+    },
+    {
+      "claim": "history W=24: inactivity_exits",
+      "verified_value": 904,
+      "source": "outputs/summary.json: 24.history.inactivity_exits"
+    },
+    {
+      "claim": "history W=24: surface_end",
+      "verified_value": 75,
+      "source": "outputs/summary.json: 24.history.surface_end"
+    },
+    {
+      "claim": "W=24 conservation",
+      "verified_value": 75,
+      "source": "outputs/summary.json: 24.history"
+    },
+    {
+      "claim": "W=24 deletion actions",
+      "verified_value": 442,
+      "source": "outputs/summary.json: 24.history.delete_actions"
+    },
+    {
+      "claim": "primary deletion ledger: matched_deletions",
+      "verified_value": 345,
+      "source": "outputs/summary.json: 6.history.matched_deletions"
+    },
+    {
+      "claim": "primary deletion ledger: unmatched_deletions",
+      "verified_value": 97,
+      "source": "outputs/summary.json: 6.history.unmatched_deletions"
+    },
+    {
+      "claim": "primary deletion ledger: matched_with_zero_live_writers",
+      "verified_value": 230,
+      "source": "outputs/summary.json: 6.history.matched_with_zero_live_writers"
+    },
+    {
+      "claim": "primary deletion ledger: matched_with_one_live_writer",
+      "verified_value": 61,
+      "source": "outputs/summary.json: 6.history.matched_with_one_live_writer"
+    },
+    {
+      "claim": "primary deletion ledger: all_history_unmatched_deletions",
+      "verified_value": 1257,
+      "source": "outputs/summary.json: 6.history.all_history_unmatched_deletions"
+    },
+    {
+      "claim": "deletion-action fraction with multi-writer exit, percent rounded",
+      "verified_value": 12.2,
+      "source": "outputs/summary.json: 6.history.deletion_exits / delete_actions"
+    },
+    {
+      "claim": "snapshot W=1: resources",
+      "verified_value": 3,
+      "source": "outputs/summary.json: 1.snapshot.resources"
+    },
+    {
+      "claim": "snapshot W=1: labels",
+      "verified_value": 5,
+      "source": "outputs/summary.json: 1.snapshot.labels"
+    },
+    {
+      "claim": "snapshot W=6: resources",
+      "verified_value": 18,
+      "source": "outputs/summary.json: 6.snapshot.resources"
+    },
+    {
+      "claim": "snapshot W=6: labels",
+      "verified_value": 27,
+      "source": "outputs/summary.json: 6.snapshot.labels"
+    },
+    {
+      "claim": "snapshot W=24: resources",
+      "verified_value": 376,
+      "source": "outputs/summary.json: 24.snapshot.resources"
+    },
+    {
+      "claim": "snapshot W=24: labels",
+      "verified_value": 826,
+      "source": "outputs/summary.json: 24.snapshot.labels"
+    },
+    {
+      "claim": "snapshot incidences W=6",
+      "verified_value": 40,
+      "source": "outputs/summary.json: 6.snapshot.incidences"
+    },
+    {
+      "claim": "snapshot incidences W=24",
+      "verified_value": 2471,
+      "source": "outputs/summary.json: 24.snapshot.incidences"
+    },
+    {
+      "claim": "primary component labels",
+      "verified_value": [
+        8,
+        6,
+        4,
+        3,
+        2,
+        2,
+        2
+      ],
+      "source": "outputs/summary.json: 6.snapshot.component_label_sizes"
+    },
+    {
+      "claim": "24h largest component",
+      "verified_value": 782,
+      "source": "outputs/summary.json: 24.snapshot.component_label_sizes[0]"
+    },
+    {
+      "claim": "primary resource degree counts",
+      "verified_value": {
+        "2": 14,
+        "3": 4
+      },
+      "source": "outputs/summary.json: 6.snapshot.degree_histogram"
+    },
+    {
+      "claim": "Frozen checkpoint W=1, k=1: Q_degree",
+      "verified_value": 0.6,
+      "source": "outputs/checkpoints.csv: horizon_hours=1, k=1, column=Q_degree"
+    },
+    {
+      "claim": "Frozen checkpoint W=1, k=1: Q_random_median",
+      "verified_value": 0.8,
+      "source": "outputs/checkpoints.csv: horizon_hours=1, k=1, column=Q_random_median"
+    },
+    {
+      "claim": "Frozen checkpoint W=1, k=1: G",
+      "verified_value": 0.2,
+      "source": "outputs/checkpoints.csv: horizon_hours=1, k=1, column=G"
+    },
+    {
+      "claim": "Frozen checkpoint W=6, k=2: Q_degree",
+      "verified_value": 1.0,
+      "source": "outputs/checkpoints.csv: horizon_hours=6, k=2, column=Q_degree"
+    },
+    {
+      "claim": "Frozen checkpoint W=6, k=2: Q_random_median",
+      "verified_value": 0.875,
+      "source": "outputs/checkpoints.csv: horizon_hours=6, k=2, column=Q_random_median"
+    },
+    {
+      "claim": "Frozen checkpoint W=6, k=2: G",
+      "verified_value": -0.037,
+      "source": "outputs/checkpoints.csv: horizon_hours=6, k=2, column=G"
+    },
+    {
+      "claim": "Frozen checkpoint W=6, k=5: Q_degree",
+      "verified_value": 0.75,
+      "source": "outputs/checkpoints.csv: horizon_hours=6, k=5, column=Q_degree"
+    },
+    {
+      "claim": "Frozen checkpoint W=6, k=5: Q_random_median",
+      "verified_value": 0.75,
+      "source": "outputs/checkpoints.csv: horizon_hours=6, k=5, column=Q_random_median"
+    },
+    {
+      "claim": "Frozen checkpoint W=6, k=5: G",
+      "verified_value": 0.0,
+      "source": "outputs/checkpoints.csv: horizon_hours=6, k=5, column=G"
+    },
+    {
+      "claim": "Frozen checkpoint W=6, k=9: Q_degree",
+      "verified_value": 0.5,
+      "source": "outputs/checkpoints.csv: horizon_hours=6, k=9, column=Q_degree"
+    },
+    {
+      "claim": "Frozen checkpoint W=6, k=9: Q_random_median",
+      "verified_value": 0.625,
+      "source": "outputs/checkpoints.csv: horizon_hours=6, k=9, column=Q_random_median"
+    },
+    {
+      "claim": "Frozen checkpoint W=6, k=9: G",
+      "verified_value": 0.037,
+      "source": "outputs/checkpoints.csv: horizon_hours=6, k=9, column=G"
+    },
+    {
+      "claim": "Frozen checkpoint W=24, k=38: Q_degree",
+      "verified_value": 0.623,
+      "source": "outputs/checkpoints.csv: horizon_hours=24, k=38, column=Q_degree"
+    },
+    {
+      "claim": "Frozen checkpoint W=24, k=38: Q_random_median",
+      "verified_value": 0.964,
+      "source": "outputs/checkpoints.csv: horizon_hours=24, k=38, column=Q_random_median"
+    },
+    {
+      "claim": "Frozen checkpoint W=24, k=38: G",
+      "verified_value": 0.323,
+      "source": "outputs/checkpoints.csv: horizon_hours=24, k=38, column=G"
+    },
+    {
+      "claim": "Frozen checkpoint W=24, k=94: Q_degree",
+      "verified_value": 0.381,
+      "source": "outputs/checkpoints.csv: horizon_hours=24, k=94, column=Q_degree"
+    },
+    {
+      "claim": "Frozen checkpoint W=24, k=94: Q_random_median",
+      "verified_value": 0.895,
+      "source": "outputs/checkpoints.csv: horizon_hours=24, k=94, column=Q_random_median"
+    },
+    {
+      "claim": "Frozen checkpoint W=24, k=94: G",
+      "verified_value": 0.487,
+      "source": "outputs/checkpoints.csv: horizon_hours=24, k=94, column=G"
+    },
+    {
+      "claim": "Frozen checkpoint W=24, k=188: Q_degree",
+      "verified_value": 0.107,
+      "source": "outputs/checkpoints.csv: horizon_hours=24, k=188, column=Q_degree"
+    },
+    {
+      "claim": "Frozen checkpoint W=24, k=188: Q_random_median",
+      "verified_value": 0.701,
+      "source": "outputs/checkpoints.csv: horizon_hours=24, k=188, column=Q_random_median"
+    },
+    {
+      "claim": "Frozen checkpoint W=24, k=188: G",
+      "verified_value": 0.562,
+      "source": "outputs/checkpoints.csv: horizon_hours=24, k=188, column=G"
+    },
+    {
+      "claim": "24h 25% budget degree Q, percent",
+      "verified_value": 38.1,
+      "source": "outputs/checkpoints.csv: W=24,k=94,Q_degree times 100"
+    },
+    {
+      "claim": "24h 25% budget median random Q, percent",
+      "verified_value": 89.5,
+      "source": "outputs/checkpoints.csv: W=24,k=94,Q_random_median times 100"
+    },
+    {
+      "claim": "24h 94 withdrawals degree component",
+      "verified_value": 298,
+      "source": "outputs/simulations_w24.npz: degree_counts[94]"
+    },
+    {
+      "claim": "24h 94 withdrawals median random component",
+      "verified_value": 700.0,
+      "source": "outputs/simulations_w24.npz: median(random_counts[:,94])"
+    },
+    {
+      "claim": "sampled random orders as disruptive as degree, W24 k94",
+      "verified_value": 0,
+      "source": "outputs/simulations_w24.npz: count(random_counts[:,94] <= degree_counts[94])"
+    },
+    {
+      "claim": "exact W6 k=2: uniform_subsets",
+      "verified_value": 153.0,
+      "source": "outputs/exact_checkpoints.csv: W=6,k=2,uniform_subsets"
+    },
+    {
+      "claim": "exact W6 k=2: uniform_component_median",
+      "verified_value": 7.0,
+      "source": "outputs/exact_checkpoints.csv: W=6,k=2,uniform_component_median"
+    },
+    {
+      "claim": "exact W6 k=2: degree_component_labels",
+      "verified_value": 8.0,
+      "source": "outputs/exact_checkpoints.csv: W=6,k=2,degree_component_labels"
+    },
+    {
+      "claim": "exact W6 k=2: tie_component_min",
+      "verified_value": 6.0,
+      "source": "outputs/exact_checkpoints.csv: W=6,k=2,tie_component_min"
+    },
+    {
+      "claim": "exact W6 k=2: tie_component_max",
+      "verified_value": 8.0,
+      "source": "outputs/exact_checkpoints.csv: W=6,k=2,tie_component_max"
+    },
+    {
+      "claim": "exact W6 k=2 probability percent rounded",
+      "verified_value": 100.0,
+      "source": "outputs/exact_checkpoints.csv: W=6,k=2,uniform_probability_at_least_as_disruptive"
+    },
+    {
+      "claim": "exact W6 k=5: uniform_subsets",
+      "verified_value": 8568.0,
+      "source": "outputs/exact_checkpoints.csv: W=6,k=5,uniform_subsets"
+    },
+    {
+      "claim": "exact W6 k=5: uniform_component_median",
+      "verified_value": 6.0,
+      "source": "outputs/exact_checkpoints.csv: W=6,k=5,uniform_component_median"
+    },
+    {
+      "claim": "exact W6 k=5: degree_component_labels",
+      "verified_value": 6.0,
+      "source": "outputs/exact_checkpoints.csv: W=6,k=5,degree_component_labels"
+    },
+    {
+      "claim": "exact W6 k=5: tie_component_min",
+      "verified_value": 5.0,
+      "source": "outputs/exact_checkpoints.csv: W=6,k=5,tie_component_min"
+    },
+    {
+      "claim": "exact W6 k=5: tie_component_max",
+      "verified_value": 6.0,
+      "source": "outputs/exact_checkpoints.csv: W=6,k=5,tie_component_max"
+    },
+    {
+      "claim": "exact W6 k=5 probability percent rounded",
+      "verified_value": 61.9,
+      "source": "outputs/exact_checkpoints.csv: W=6,k=5,uniform_probability_at_least_as_disruptive"
+    },
+    {
+      "claim": "exact W6 k=9: uniform_subsets",
+      "verified_value": 48620.0,
+      "source": "outputs/exact_checkpoints.csv: W=6,k=9,uniform_subsets"
+    },
+    {
+      "claim": "exact W6 k=9: uniform_component_median",
+      "verified_value": 5.0,
+      "source": "outputs/exact_checkpoints.csv: W=6,k=9,uniform_component_median"
+    },
+    {
+      "claim": "exact W6 k=9: degree_component_labels",
+      "verified_value": 4.0,
+      "source": "outputs/exact_checkpoints.csv: W=6,k=9,degree_component_labels"
+    },
+    {
+      "claim": "exact W6 k=9: tie_component_min",
+      "verified_value": 3.0,
+      "source": "outputs/exact_checkpoints.csv: W=6,k=9,tie_component_min"
+    },
+    {
+      "claim": "exact W6 k=9: tie_component_max",
+      "verified_value": 6.0,
+      "source": "outputs/exact_checkpoints.csv: W=6,k=9,tie_component_max"
+    },
+    {
+      "claim": "exact W6 k=9 probability percent rounded",
+      "verified_value": 35.1,
+      "source": "outputs/exact_checkpoints.csv: W=6,k=9,uniform_probability_at_least_as_disruptive"
+    },
+    {
+      "claim": "dse~WillkommenImWiki: 24h degree",
+      "verified_value": 323,
+      "source": "outputs/hub_recency.csv: row=0"
+    },
+    {
+      "claim": "dse~WillkommenImWiki: youngest write age rounded hours",
+      "verified_value": 13.5,
+      "source": "outputs/hub_recency.csv: row=0,latest_writer_age_hours"
+    },
+    {
+      "claim": "dse~WillkommenImWiki: writers in 6h",
+      "verified_value": 0,
+      "source": "outputs/hub_recency.csv: row=0"
+    },
+    {
+      "claim": "dse~StartSeite: 24h degree",
+      "verified_value": 156,
+      "source": "outputs/hub_recency.csv: row=1"
+    },
+    {
+      "claim": "dse~StartSeite: youngest write age rounded hours",
+      "verified_value": 11.0,
+      "source": "outputs/hub_recency.csv: row=1,latest_writer_age_hours"
+    },
+    {
+      "claim": "dse~StartSeite: writers in 6h",
+      "verified_value": 0,
+      "source": "outputs/hub_recency.csv: row=1"
+    },
+    {
+      "claim": "dse~TestSeite: 24h degree",
+      "verified_value": 106,
+      "source": "outputs/hub_recency.csv: row=2"
+    },
+    {
+      "claim": "dse~TestSeite: youngest write age rounded hours",
+      "verified_value": 11.0,
+      "source": "outputs/hub_recency.csv: row=2,latest_writer_age_hours"
+    },
+    {
+      "claim": "dse~TestSeite: writers in 6h",
+      "verified_value": 0,
+      "source": "outputs/hub_recency.csv: row=2"
+    },
+    {
+      "claim": "24h resources with no writer in 6h",
+      "verified_value": 354,
+      "source": "outputs/hub_recency.csv: count(writers_within_6h == 0)"
+    },
+    {
+      "claim": "All local snapshot-offset checkpoints unchanged",
+      "verified_value": true,
+      "source": "outputs/snapshot_clock_sensitivity.csv: -1, 0, +1 second comparisons"
+    },
+    {
+      "claim": "24h labels when ambiguous revisions included",
+      "verified_value": 827,
+      "source": "outputs/ambiguous_label_sensitivity.csv: W=24,labels"
+    },
+    {
+      "claim": "Touching clock intervals preserve affected-page transition totals",
+      "verified_value": true,
+      "source": "outputs/clock_order_sensitivity.csv"
+    },
+    {
+      "claim": "recreation provenance: linked_edges",
+      "verified_value": 64,
+      "source": "outputs/recreation_audit.json: linked_edges"
+    },
+    {
+      "claim": "recreation provenance: linked_revision_count",
+      "verified_value": 63,
+      "source": "outputs/recreation_audit.json: linked_revision_count"
+    },
+    {
+      "claim": "recreation provenance: missing_event_links",
+      "verified_value": 0,
+      "source": "outputs/recreation_audit.json: missing_event_links"
+    },
+    {
+      "claim": "recreation provenance: page_mismatches",
+      "verified_value": 0,
+      "source": "outputs/recreation_audit.json: page_mismatches"
+    },
+    {
+      "claim": "hourly independent checks",
+      "verified_value": 504,
+      "source": "outputs/analysis_validation.json: sum(hourly_oracle_checks)"
+    },
+    {
+      "claim": "forward-removal trajectory checks",
+      "verified_value": 33,
+      "source": "outputs/analysis_validation.json: sum(forward_removal_trajectory_checks)"
+    },
+    {
+      "claim": "Hourly W=6, 25%: nonempty, positive, zero, negative gain",
+      "verified_value": [
+        151,
+        138,
+        9,
+        4
+      ],
+      "source": "outputs/temporal_checkpoints.csv: W, requested_fraction=0.25"
+    },
+    {
+      "claim": "Hourly W=24, 25%: nonempty, positive, zero, negative gain",
+      "verified_value": [
+        161,
+        160,
+        1,
+        0
+      ],
+      "source": "outputs/temporal_checkpoints.csv: W, requested_fraction=0.25"
+    },
+    {
+      "claim": "Hourly W6 positive gain using degree-tie median",
+      "verified_value": 139,
+      "source": "outputs/temporal_checkpoints.csv: W=6, fraction=0.25, R_random_median > R_tie_median"
+    },
+    {
+      "claim": "Frozen common-pool comparison: k",
+      "verified_value": 18.0,
+      "source": "outputs/crossed_frozen_snapshot.csv: requested_fraction=1, k"
+    },
+    {
+      "claim": "Frozen common-pool comparison: older_candidates",
+      "verified_value": 376.0,
+      "source": "outputs/crossed_frozen_snapshot.csv: requested_fraction=1, older_candidates"
+    },
+    {
+      "claim": "Frozen common-pool comparison: recent_resources",
+      "verified_value": 18.0,
+      "source": "outputs/crossed_frozen_snapshot.csv: requested_fraction=1, recent_resources"
+    },
+    {
+      "claim": "Frozen common-pool comparison: recent_resources_selected_by_older_degree",
+      "verified_value": 0.0,
+      "source": "outputs/crossed_frozen_snapshot.csv: requested_fraction=1, recent_resources_selected_by_older_degree"
+    },
+    {
+      "claim": "Frozen common-pool comparison: Q6_older_degree",
+      "verified_value": 1.0,
+      "source": "outputs/crossed_frozen_snapshot.csv: requested_fraction=1, Q6_older_degree"
+    },
+    {
+      "claim": "Frozen common-pool comparison: Q6_recent_degree",
+      "verified_value": 0.125,
+      "source": "outputs/crossed_frozen_snapshot.csv: requested_fraction=1, Q6_recent_degree"
+    },
+    {
+      "claim": "Older graph largest component after 18 older-degree withdrawals",
+      "verified_value": 545,
+      "source": "outputs/simulations_w24.npz: degree_counts[18]"
+    },
+    {
+      "claim": "Hourly common-pool comparisons",
+      "verified_value": 151,
+      "source": "outputs/crossed_hourly.csv: count(requested_fraction=1)"
+    },
+    {
+      "claim": "Hourly complete misses of recent resources",
+      "verified_value": 20,
+      "source": "outputs/crossed_hourly.csv: full recent budget, count(older coverage=0)"
+    },
+    {
+      "claim": "Median older-degree coverage of recent resources, rounded percent",
+      "verified_value": 33.3,
+      "source": "outputs/crossed_hourly.csv: full recent budget, median(older coverage)"
+    },
+    {
+      "claim": "Older-degree Q6 better than median uniform at full recent budget",
+      "verified_value": 113,
+      "source": "outputs/crossed_hourly.csv: full recent budget, Q6_older_degree < Q6_uniform_median"
+    },
+    {
+      "claim": "Hourly complete misses under every valid older-degree tie ordering",
+      "verified_value": 20,
+      "source": "outputs/crossed_tie_bounds.csv: hourly, requested_fraction=1, max_selected=0"
+    },
+    {
+      "claim": "Frozen zero recent coverage under every older-degree tie ordering",
+      "verified_value": 0,
+      "source": "outputs/crossed_tie_bounds.csv: frozen, requested_fraction=1, max_selected"
+    },
+    {
+      "claim": "Temporal validation: full_incidence_oracle_checks",
+      "verified_value": 336,
+      "source": "outputs/temporal_validation.json: full_incidence_oracle_checks"
+    },
+    {
+      "claim": "Temporal validation: forward_trajectory_checks",
+      "verified_value": 27,
+      "source": "outputs/temporal_validation.json: forward_trajectory_checks"
+    },
+    {
+      "claim": "frozen methodology hash",
+      "verified_value": "feb30cc6aa14a6915ccceb6507b2ace6a1fc529e65e1d8bbbbbbef29e1be931a",
+      "source": "docs/preanalysis.md"
+    }
+  ]
+}

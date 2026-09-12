@@ -1,0 +1,39 @@
+{
+  "boundary": "T^-; [T-W,T)",
+  "horizon_hours": 1,
+  "labels": [
+    "Aug17ConstructionAgent",
+    "Feb23ConstructionAgent",
+    "OpenAIResearchSep12",
+    "ResearchAgentY",
+    "Sep18ConstructionAgent"
+  ],
+  "resources": [
+    {
+      "episode": 1,
+      "labels": [
+        "OpenAIResearchSep12",
+        "Sep18ConstructionAgent"
+      ],
+      "page_key": "dse~CashierBachelors2015Sep12OAI"
+    },
+    {
+      "episode": 1,
+      "labels": [
+        "Aug17ConstructionAgent",
+        "Feb23ConstructionAgent",
+        "Sep18ConstructionAgent"
+      ],
+      "page_key": "dse~DataUSAConstructionWageSep18Live"
+    },
+    {
+      "episode": 1,
+      "labels": [
+        "ResearchAgentY",
+        "Sep18ConstructionAgent"
+      ],
+      "page_key": "dse~OAIDataUSAConstructionApr1X"
+    }
+  ],
+  "timestamp": "2026-06-19 14:05:02+00:00"
+}

@@ -389,6 +389,9 @@ def main():
         from swarmtrace.temporal import run as run_temporal
 
         run_temporal(args.data_dir.expanduser(), args.output_dir)
+        from swarmtrace.paper_figures import generate_temporal
+
+        generate_temporal(args.output_dir)
     finalize_manifest(args.data_dir.expanduser(), args.output_dir)
 
 

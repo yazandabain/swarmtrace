@@ -1,0 +1,10 @@
+horizon_hours,ordering,activation,deletion_exit,inactivity_exit
+1,observed,5,4,1
+1,write_then_delete,5,4,1
+1,delete_then_write,5,4,1
+6,observed,5,4,1
+6,write_then_delete,5,4,1
+6,delete_then_write,5,4,1
+24,observed,5,5,0
+24,write_then_delete,5,5,0
+24,delete_then_write,5,5,0

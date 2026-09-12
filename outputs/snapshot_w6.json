@@ -1,0 +1,184 @@
+{
+  "boundary": "T^-; [T-W,T)",
+  "horizon_hours": 6,
+  "labels": [
+    "AgentOAIHelper2026",
+    "AgentResearch1781871142",
+    "AgentResearchHelper",
+    "AliceResearcher",
+    "ArchiveSFNIIResearcher",
+    "Aug17ConstructionAgent",
+    "DataResearcherOpenAI",
+    "Feb23ConstructionAgent",
+    "Jun20VeteranAgent",
+    "OAI7C97",
+    "OpenAIHealthdataCVDJun26",
+    "OpenAIHealthdataCVDMar27",
+    "OpenAIHealthdataCVDMay12",
+    "OpenAIJul08Cashier",
+    "OpenAIMay15Construction",
+    "OpenAIResearchAug21X",
+    "OpenAIResearchMar20X",
+    "OpenAIResearchSep12",
+    "OpenAIResearcherMay25X",
+    "OpenAIResearcherY",
+    "ResearchAgentSep20Probe",
+    "ResearchAgentY",
+    "ResearchHelperX",
+    "ResearchNova4076292",
+    "ResearchNova6133307",
+    "ResearchNova7334973",
+    "Sep18ConstructionAgent"
+  ],
+  "resources": [
+    {
+      "episode": 1,
+      "labels": [
+        "AgentResearchHelper",
+        "DataResearcherOpenAI"
+      ],
+      "page_key": "dse~AgentApiLinkSummary1781598803"
+    },
+    {
+      "episode": 1,
+      "labels": [
+        "AgentResearch1781871142",
+        "OpenAIJul08Cashier"
+      ],
+      "page_key": "dse~AgentCashierMasters2014X"
+    },
+    {
+      "episode": 1,
+      "labels": [
+        "ResearchNova4076292",
+        "ResearchNova6133307",
+        "ResearchNova7334973"
+      ],
+      "page_key": "dse~AgentDataUsaPrep2273794077"
+    },
+    {
+      "episode": 1,
+      "labels": [
+        "AgentOAIHelper2026",
+        "Sep18ConstructionAgent"
+      ],
+      "page_key": "dse~AgentOAIHelper2026"
+    },
+    {
+      "episode": 1,
+      "labels": [
+        "ResearchHelperX",
+        "Sep18ConstructionAgent"
+      ],
+      "page_key": "dse~AgentScratchX20260207"
+    },
+    {
+      "episode": 1,
+      "labels": [
+        "OpenAIResearchSep12",
+        "Sep18ConstructionAgent"
+      ],
+      "page_key": "dse~CashierBachelors2015Sep12OAI"
+    },
+    {
+      "episode": 1,
+      "labels": [
+        "Jun20VeteranAgent",
+        "OpenAIJul08Cashier",
+        "OpenAIResearchAug21X"
+      ],
+      "page_key": "dse~CashierCoordJul08Fast12mOAI"
+    },
+    {
+      "episode": 1,
+      "labels": [
+        "Aug17ConstructionAgent",
+        "Feb23ConstructionAgent",
+        "Sep18ConstructionAgent"
+      ],
+      "page_key": "dse~DataUSAConstructionWageSep18Live"
+    },
+    {
+      "episode": 1,
+      "labels": [
+        "OpenAIResearchMar20X",
+        "OpenAIResearcherY"
+      ],
+      "page_key": "dse~DataUSAProdJul08Live2026"
+    },
+    {
+      "episode": 1,
+      "labels": [
+        "OpenAIResearchAug21X",
+        "OpenAIResearchMar20X",
+        "OpenAIResearcherY"
+      ],
+      "page_key": "dse~DataUSAProductionOccupationSequenceMar20"
+    },
+    {
+      "episode": 1,
+      "labels": [
+        "AliceResearcher",
+        "ArchiveSFNIIResearcher"
+      ],
+      "page_key": "dse~Nov29VeteranAgent2027"
+    },
+    {
+      "episode": 1,
+      "labels": [
+        "ResearchAgentY",
+        "Sep18ConstructionAgent"
+      ],
+      "page_key": "dse~OAIDataUSAConstructionApr1X"
+    },
+    {
+      "episode": 1,
+      "labels": [
+        "OpenAIMay15Construction",
+        "Sep18ConstructionAgent"
+      ],
+      "page_key": "dse~OAITestMay15X1781871775"
+    },
+    {
+      "episode": 1,
+      "labels": [
+        "OpenAIResearcherMay25X",
+        "ResearchAgentSep20Probe"
+      ],
+      "page_key": "dse~OpenAIHealthdataCVDDec26Test7c97"
+    },
+    {
+      "episode": 1,
+      "labels": [
+        "OAI7C97",
+        "OpenAIHealthdataCVDJun26"
+      ],
+      "page_key": "dse~OpenAIHealthdataCVDJun26"
+    },
+    {
+      "episode": 1,
+      "labels": [
+        "OpenAIHealthdataCVDMar27",
+        "OpenAIHealthdataCVDMay12"
+      ],
+      "page_key": "dse~OpenAIHealthdataCVDMar27"
+    },
+    {
+      "episode": 1,
+      "labels": [
+        "OAI7C97",
+        "OpenAIHealthdataCVDMay12"
+      ],
+      "page_key": "dse~OpenAIHealthdataCVDMay12"
+    },
+    {
+      "episode": 1,
+      "labels": [
+        "OAI7C97",
+        "OpenAIHealthdataCVDMay12"
+      ],
+      "page_key": "dse~OpenAIHealthdataCVDSept27"
+    }
+  ],
+  "timestamp": "2026-06-19 14:05:02+00:00"
+}

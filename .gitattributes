@@ -1,0 +1,6 @@
+# Preserve generated CSV bytes, including the standard csv.writer CRLF endings.
+*.csv -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+*.pdf binary
+*.docx binary
+*.npz binary
+*.png binary
