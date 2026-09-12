@@ -291,6 +291,28 @@ def validate_report(report: dict) -> None:
         ),
     }
 
+    expected_actors = {
+        "total": EXPECTED_DSE_REVISIONS,
+        "moderator": EXPECTED_MODERATOR_REVISIONS,
+        "ambiguous": EXPECTED_AMBIGUOUS_REVISIONS,
+        "missing": EXPECTED_MISSING_LABELS,
+        "suspicious": EXPECTED_SUSPICIOUS_REVISIONS,
+    }
+    expected_deletes = {
+        "successful": EXPECTED_SUCCESSFUL_DSE_DELETES,
+        "page_held_true": EXPECTED_DELETE_PAGE_HELD_TRUE,
+        "page_held_false": EXPECTED_DELETE_PAGE_HELD_FALSE,
+        "page_held_missing": 0,
+        "unexpected_actor": EXPECTED_UNEXPECTED_DELETE_ACTORS,
+    }
+    for category, expected in expected_actors.items():
+        checks[f"revision category {category}"] = (
+            report["revisions"]["actor_counts"][category],
+            expected,
+        )
+    for category, expected in expected_deletes.items():
+        checks[f"deletion category {category}"] = (report["deletes"]["summary"][category], expected)
+
     for name, (actual, expected) in checks.items():
         if actual != expected:
             raise SystemExit(

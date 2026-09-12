@@ -427,7 +427,7 @@ def test_replay_records_inactivity_exit_at_exact_expiry_time() -> None:
     assert state.transitions[-1].timestamp == datetime(2026, 6, 18, 18, 0, tzinfo=UTC)
 
 
-def test_refresh_at_exact_expiry_does_not_create_false_transitions() -> None:
+def test_refresh_at_exact_expiry_expires_before_new_write() -> None:
     revisions = [
         {
             "page_key": "dse~ExamplePage",
@@ -461,11 +461,13 @@ def test_refresh_at_exact_expiry_does_not_create_false_transitions() -> None:
     assert [transition.kind for transition in state.transitions] == [
         "activation",
         "inactivity_exit",
+        "activation",
+        "inactivity_exit",
     ]
 
     assert state.transitions[0].timestamp == datetime(2026, 6, 18, 12, 1, tzinfo=UTC)
 
-    assert state.transitions[1].timestamp == datetime(2026, 6, 18, 18, 1, tzinfo=UTC)
+    assert state.transitions[1].timestamp == datetime(2026, 6, 18, 18, 0, tzinfo=UTC)
 
 
 def test_active_multiwriter_context_counts() -> None:

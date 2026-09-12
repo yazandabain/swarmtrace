@@ -13,6 +13,16 @@ class SurfaceTransition:
 
 
 @dataclass(frozen=True)
+class DeletionRecord:
+    timestamp: datetime
+    page_key: str
+    event_id: str | None
+    episode: int | None
+    live_writers: int
+    page_held: bool | None
+
+
+@dataclass(frozen=True)
 class HourlySurfaceRow:
     hour_start: datetime
     surface_start: int
@@ -27,9 +37,28 @@ class HourlySurfaceRow:
 
 class LiveSurfaceState:
     def __init__(self, horizon: timedelta) -> None:
+        if horizon <= timedelta(0):
+            raise ValueError("horizon must be positive")
         self.horizon = horizon
         self._writers_by_page: dict[str, dict[str, datetime]] = {}
+        self._episodes_by_page: dict[str, int] = {}
+        self._episode_counts: dict[str, int] = defaultdict(int)
         self.transitions: list[SurfaceTransition] = []
+        self.deletion_records: list[DeletionRecord] = []
+
+    def _ensure_episode(self, page_key: str) -> None:
+        if page_key not in self._episodes_by_page:
+            self._episode_counts[page_key] += 1
+            self._episodes_by_page[page_key] = self._episode_counts[page_key]
+
+    @property
+    def active_resources(self) -> dict[tuple[str, int], dict[str, datetime]]:
+        """A detached copy of eligible page episodes and latest live writes."""
+        return {
+            (page, self._episodes_by_page[page]): dict(writers)
+            for page, writers in self._writers_by_page.items()
+            if len(writers) >= 2
+        }
 
     def apply_write(
         self,
@@ -37,6 +66,7 @@ class LiveSurfaceState:
         label: str,
         timestamp: datetime,
     ) -> None:
+        self._ensure_episode(page_key)
         writers = self._writers_by_page.setdefault(page_key, {})
 
         was_multiwriter = len(writers) >= 2
@@ -57,18 +87,14 @@ class LiveSurfaceState:
     def expire(
         self,
         timestamp: datetime,
-        protected_pairs: set[tuple[str, str]] | None = None,
     ) -> None:
         cutoff = timestamp - self.horizon
-        protected_pairs = protected_pairs or set()
 
         for page_key, writers in list(self._writers_by_page.items()):
             was_multiwriter = len(writers) >= 2
 
             expired_labels = [
-                label
-                for label, last_write in writers.items()
-                if last_write <= cutoff and (page_key, label) not in protected_pairs
+                label for label, last_write in writers.items() if last_write <= cutoff
             ]
 
             for label in expired_labels:
@@ -111,8 +137,20 @@ class LiveSurfaceState:
         self,
         page_key: str,
         timestamp: datetime,
+        event_id: str | None = None,
+        page_held: bool | None = None,
     ) -> None:
         writers = self._writers_by_page.get(page_key)
+        self.deletion_records.append(
+            DeletionRecord(
+                timestamp=timestamp,
+                page_key=page_key,
+                event_id=event_id,
+                episode=self._episodes_by_page.pop(page_key, None),
+                live_writers=len(writers or {}),
+                page_held=page_held,
+            )
+        )
 
         if writers is not None and len(writers) >= 2:
             self.transitions.append(
@@ -126,6 +164,8 @@ class LiveSurfaceState:
         self._writers_by_page.pop(page_key, None)
 
     def apply_revision(self, record: dict) -> None:
+        # A stored write establishes page existence even if its actor is excluded.
+        self._ensure_episode(record["page_key"])
         if classify_revision(record) != "suspicious":
             return
 
@@ -186,16 +226,8 @@ def _apply_timestamp(
         key=lambda record: (record["page_key"], record["seq"]),
     )
 
-    protected_pairs = {
-        (record["page_key"], record["label"])
-        for record in revisions_at_time
-        if classify_revision(record) == "suspicious"
-    }
-
-    state.expire(
-        timestamp,
-        protected_pairs=protected_pairs,
-    )
+    # Frozen rule: expire first, including a pair refreshed at this same second.
+    state.expire(timestamp)
 
     for record in revisions_at_time:
         normalized = dict(record)
@@ -206,7 +238,27 @@ def _apply_timestamp(
         state.apply_delete(
             page_key=record["page_key"],
             timestamp=timestamp,
+            event_id=record.get("event_id"),
+            page_held=record.get("page_held"),
         )
+
+
+def snapshot_before(
+    revisions: list[dict],
+    deletes: list[dict],
+    horizon: timedelta,
+    timestamp: datetime,
+) -> LiveSurfaceState:
+    """True left limit: source events and expirations at timestamp are excluded."""
+    state = LiveSurfaceState(horizon)
+    revisions = [r for r in revisions if parse_utc_timestamp(r["time"]) < timestamp]
+    deletes = [r for r in deletes if parse_utc_timestamp(r["time"]) < timestamp]
+    revisions_by_time, deletes_by_time, event_times = _prepare_timeline(revisions, deletes, horizon)
+    for event_time in event_times:
+        if event_time >= timestamp:
+            break
+        _apply_timestamp(state, event_time, revisions_by_time, deletes_by_time)
+    return state
 
 
 def replay_records(
