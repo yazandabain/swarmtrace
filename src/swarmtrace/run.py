@@ -330,6 +330,13 @@ def finalize_manifest(data_dir, output):
         *sorted((project / "docs").glob("*.md")),
         *sorted((project / "docs").glob("*.json")),
     ]
+    # A source ZIP is reproducible without requiring a .git directory.
+    head = subprocess.run(
+        ["git", "rev-parse", "HEAD"], cwd=project, capture_output=True, text=True, check=False
+    )
+    status = subprocess.run(
+        ["git", "status", "--porcelain"], cwd=project, capture_output=True, text=True, check=False
+    )
     write_json(
         output / "run_manifest.json",
         {
@@ -340,11 +347,9 @@ def finalize_manifest(data_dir, output):
                 p: importlib.metadata.version(p)
                 for p in ["numpy", "networkx", "pandas", "matplotlib"]
             },
-            "git_head": subprocess.check_output(
-                ["git", "rev-parse", "HEAD"], cwd=project, text=True
-            ).strip(),
-            "worktree_has_uncommitted_changes": bool(
-                subprocess.check_output(["git", "status", "--porcelain"], cwd=project, text=True)
+            "git_head": head.stdout.strip() if head.returncode == 0 else None,
+            "worktree_has_uncommitted_changes": (
+                bool(status.stdout) if status.returncode == 0 else None
             ),
             "report_interval": "[2026-06-16T00:00:00Z, 2026-06-23T00:00:00Z)",
             "snapshot": SNAPSHOT,
@@ -367,6 +372,11 @@ def main():
         action="store_true",
         help="Skip post-result exact and sensitivity diagnostics and paper figures",
     )
+    parser.add_argument(
+        "--with-temporal-audit",
+        action="store_true",
+        help="Also run the exploratory hourly and crossed-horizon audit (several minutes)",
+    )
     args = parser.parse_args()
     run(args.data_dir.expanduser(), args.output_dir)
     if not args.primary_only:
@@ -375,6 +385,10 @@ def main():
 
         run_diagnostics(args.data_dir.expanduser(), args.output_dir)
         generate(args.output_dir)
+    if args.with_temporal_audit:
+        from swarmtrace.temporal import run as run_temporal
+
+        run_temporal(args.data_dir.expanduser(), args.output_dir)
     finalize_manifest(args.data_dir.expanduser(), args.output_dir)
 
 

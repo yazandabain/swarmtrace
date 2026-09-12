@@ -20,7 +20,10 @@ class SnapshotGraph:
 
     @classmethod
     def from_state(cls, state: LiveSurfaceState) -> "SnapshotGraph":
-        active = state.active_resources
+        return cls.from_resources(state.active_resources)
+
+    @classmethod
+    def from_resources(cls, active: dict[Resource, dict[str, datetime]]) -> "SnapshotGraph":
         resources = tuple(sorted(active))
         labels = tuple(sorted({label for writers in active.values() for label in writers}))
         index = {label: i for i, label in enumerate(labels)}

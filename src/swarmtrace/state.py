@@ -261,6 +261,30 @@ def snapshot_before(
     return state
 
 
+def active_resources_before_times(
+    revisions: list[dict],
+    deletes: list[dict],
+    horizon: timedelta,
+    timestamps: list[datetime],
+):
+    """Yield detached eligible-resource dictionaries at sorted true left limits."""
+    if timestamps != sorted(set(timestamps)):
+        raise ValueError("snapshot timestamps must be strictly increasing")
+    if not timestamps:
+        return
+    # Future records cannot make an otherwise valid historical snapshot ambiguous.
+    revisions = [r for r in revisions if parse_utc_timestamp(r["time"]) < timestamps[-1]]
+    deletes = [r for r in deletes if parse_utc_timestamp(r["time"]) < timestamps[-1]]
+    revisions_by_time, deletes_by_time, event_times = _prepare_timeline(revisions, deletes, horizon)
+    state = LiveSurfaceState(horizon)
+    i = 0
+    for timestamp in timestamps:
+        while i < len(event_times) and event_times[i] < timestamp:
+            _apply_timestamp(state, event_times[i], revisions_by_time, deletes_by_time)
+            i += 1
+        yield timestamp, state.active_resources
+
+
 def replay_records(
     revisions: list[dict],
     deletes: list[dict],

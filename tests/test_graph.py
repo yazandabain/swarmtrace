@@ -115,3 +115,53 @@ def test_exact_subset_distributions_match_all_uniform_permutations():
             assert histogram[k, size] * factorial(k) * factorial(3 - k) == count
     assert tie_histogram[1, 3] == 1
     assert tie_histogram[2].sum() == 2
+
+
+def test_crossed_graph_changes_action_pool_without_importing_historical_labels():
+    from swarmtrace.temporal import crossed_graph
+
+    recent = SnapshotGraph((("p", 1),), ("a", "b"), ((0, 1),))
+    older = SnapshotGraph((("p", 1), ("q", 1)), ("a", "b", "c", "d", "e"), ((0, 1), (2, 3, 4)))
+    fixed = crossed_graph(recent, older)
+    assert fixed.labels == ("a", "b")
+    assert fixed.writers == ((0, 1), ())
+    # Removing the older hub consumes a step without changing recent connectivity.
+    assert list(largest_label_counts(fixed, [1, 0])) == [2, 2, 1]
+    assert list(largest_label_counts(fixed, [0, 1])) == [2, 1, 1]
+    np.testing.assert_array_equal(reference_counts(fixed, [1, 0]), [2, 2, 1])
+
+
+def test_multi_snapshot_iterator_preserves_boundaries_and_detaches_results():
+    from swarmtrace.state import active_resources_before_times
+
+    t = datetime(2026, 6, 19, tzinfo=UTC)
+    h = timedelta(hours=1)
+    rows = [
+        revision("a", t.isoformat(), 1),
+        revision("b", t.isoformat(), 2),
+        revision("c", (t + h).isoformat(), 3),
+    ]
+    times = [t, t + h, t + h + timedelta(microseconds=1)]
+    values = list(active_resources_before_times(rows, [], h, times))
+    assert values[0][1] == {}
+    assert set(values[1][1][("p", 1)]) == {"a", "b"}
+    assert values[2][1] == {}
+    for time, active in values:
+        assert active == snapshot_before(rows, [], h, time).active_resources
+    with pytest.raises(ValueError, match="strictly increasing"):
+        list(active_resources_before_times(rows, [], h, [t, t]))
+
+
+def test_exact_tie_coverage_bounds_match_all_admissible_orders():
+    from swarmtrace.temporal import tie_coverage_bounds
+
+    degrees = [4, 3, 3, 2]
+    present = np.array([False, True, False, True])
+    orders = [
+        o
+        for o in permutations(range(4))
+        if [degrees[i] for i in o] == sorted(degrees, reverse=True)
+    ]
+    for k in range(5):
+        hits = [int(present[list(o[:k])].sum()) for o in orders]
+        assert tie_coverage_bounds(degrees, present, k) == (min(hits), max(hits))

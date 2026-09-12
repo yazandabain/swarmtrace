@@ -73,7 +73,12 @@ def reference_counts(snapshot: SnapshotGraph, order) -> np.ndarray:
 
 
 def run_stress(
-    snapshot: SnapshotGraph, horizon_hours: int, permutations: int = 500
+    snapshot: SnapshotGraph,
+    horizon_hours: int,
+    permutations: int = 500,
+    *,
+    random_seed: int | None = None,
+    tie_seed: int | None = None,
 ) -> StressResult:
     if not snapshot.labels:
         raise ValueError("R is undefined for an empty eligible graph")
@@ -82,8 +87,12 @@ def run_stress(
     m = len(snapshot.resources)
     degree = np.array([len(w) for w in snapshot.writers])
     degree_order = np.array(sorted(range(m), key=lambda i: (-degree[i], snapshot.resources[i])))
-    random_rng = np.random.Generator(np.random.PCG64(20260912 + horizon_hours))
-    tie_rng = np.random.Generator(np.random.PCG64(20261912 + horizon_hours))
+    random_rng = np.random.Generator(
+        np.random.PCG64(20260912 + horizon_hours if random_seed is None else random_seed)
+    )
+    tie_rng = np.random.Generator(
+        np.random.PCG64(20261912 + horizon_hours if tie_seed is None else tie_seed)
+    )
     random_orders = np.array([random_rng.permutation(m) for _ in range(permutations)])
     groups = [np.flatnonzero(degree == d) for d in sorted(set(degree), reverse=True)]
     tie_orders = np.array(
